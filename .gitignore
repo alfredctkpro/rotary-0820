@@ -1,0 +1,56 @@
+# ⚠️ 這是 PUBLIC repo — 進 git 的東西全世界看得到，且 history 刪不掉
+# 下面每一條都是「不小心 commit 就會出事」的東西
+
+# ── 影片（8/10 方針：影片不進 git，本地檔主播放＋YouTube 未公開備援）
+*.mov
+*.mp4
+*.m4v
+*.avi
+*.mkv
+demos/**/*.mov
+demos/**/*.mp4
+
+# ── 敏感素材：去識別化「之前」的原始檔一律不進
+# 命名慣例：檔名含 -raw / -原始 / -未遮 的都擋掉
+*-raw.*
+*-原始.*
+*-未遮.*
+**/raw/
+**/未遮蔽/
+
+# ── 投資相關（Demo 3 素材含真實債券部位金額，絕不進 public）
+**/investiment-base/
+**/對帳單*
+**/statement*
+*持倉*
+*部位明細*
+
+# ── 憑證與設定
+.env
+.env.*
+!.env.example
+*.pem
+config.yaml
+credentials*
+# ⚠️ 不要寫 `*.key`——Keynote 投影片副檔名也是 .key，會把 slides/ 全擋掉。
+# 憑證改用明確路徑或 *-private.key 這種帶後綴的寫法。
+*-private.key
+*_rsa
+id_rsa*
+
+# ── Hermes / LINE 設定（含 Channel Secret、Access Token）
+**/hermes-config*
+**/line-config*
+*channel_secret*
+*access_token*
+
+# ── 系統與編輯器
+.DS_Store
+.AppleDouble
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# ── Keynote 暫存
+*.key.sb-*
