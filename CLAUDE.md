@@ -6,7 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 這個 repo 是什麼
 
-2026-08-20（四）扶輪社演講《貓的 AI 多重宇宙》的**內容製作庫**——講者 Alfred（康貓），40 分鐘，聽眾約 40 位企業主／高階主管（碰過 AI 的不到 10 人）。
+2026-08-20（四）扶輪社演講《貓的 AI 多重宇宙》的**內容製作庫**——講者 Alfred（康貓 PP），40 分鐘，聽眾約 40 位企業主／高階主管（碰過 AI 的不到 10 人）。
+
+**現場條件**（由主辦海報 `assets/talk-ads.jpg` 確認，詳見 instruction.md §四之二）：台北市新世代扶輪社「新世代 AI 工作坊**三部曲 EPISODE 1**」· 8/20（四）**18:30** · **華山町餐酒館** · 現場用**簡報筆**操作。
 
 **沒有程式碼、沒有 build／test／lint。** 產出物是一份**單檔自足的 36 頁 HTML 投影片**（`index.html` 放 **repo 根目錄**）＋四支 demo 影片。驗證方式＝用瀏覽器翻一遍。
 
@@ -60,6 +62,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **插圖三張**走 gen-images 管線（藍墨手繪＋暖紙風），腳本參考 `~/bni-ai-news/ctkpro-intro/scripts/gen-images.mjs`，API key 重用 `~/ctkpro_blog_posts/.env`。**圖內絕不含文字**。
 
 **單檔自足原則**：CSS/JS 全內嵌，QR code 產完下載存 `assets/`，不要外連。
+
+**社徽**：`assets/rcgn-logo.png`（162×125，從海報裁切去背；官網原檔僅 126×200 且無去背，別用）。只在 P1 使用，顯示約 110px 寬。P1 標「三部曲 EPISODE 1」、只放「康貓 PP Alfred Kang」不放頭銜。
+
+### 🎮 簡報筆（現場操作方式，會改變鍵盤邏輯）
+
+骨架已處理 `PageDown`／`PageUp`（＝簡報筆送的鍵），但**必須另外補**（設計細節見 instruction.md §四之二）：
+
+1. **影片頁改成 `step` 狀態機**——骨架的影片靠 `onclick` 觸發，**簡報筆按不到**。改為「▶ 播放 → ▶ 關閉留在原頁 → ▶ 才翻頁」。P26 為三段（多一段淡入資料夾截圖）。
+2. **鐵律：影片播完不自動翻頁**——四個影片頁播完後都還有話術要在同一頁講。
+3. **攔 `F5`**（部分簡報筆送 F5＝瀏覽器重載，會跳回第 1 頁）、攔 `b`／`.` 黑屏鍵。
+4. **播放中不可鎖死鍵盤**——簡報筆沒有 Esc 鍵，播放中按下一頁必須能跳出影片。
+5. 翻頁後把焦點拉回舞台容器。
 
 ## 影片轉檔
 

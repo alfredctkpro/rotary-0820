@@ -16,6 +16,17 @@
 **/raw/
 **/未遮蔽/
 
+# ⚠️ 手機原始照片（HEIC）一律不進——通常是未遮蔽的實拍素材，且帶 GPS EXIF。
+# 例：assets/real-calendar.HEIC 是爸媽月曆實拍的原檔，
+#     進 repo 的是清過 EXIF 的 real-calendar.jpg。
+*.heic
+*.HEIC
+
+# ⚠️ 生圖用的個人原始照——只是 gen-images 的參考素材，投影片並未引用，
+#    沒有理由把原始個人照永久公開（成品 multiverse-me.png 才進 repo）。
+assets/alfred.jpg
+assets/alfred-face.*
+
 # ── 投資相關（Demo 3 素材含真實債券部位金額，絕不進 public）
 **/investiment-base/
 **/對帳單*

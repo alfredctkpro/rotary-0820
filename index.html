@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>貓的 AI 多重宇宙｜台北市新世代扶輪社 2026.08.20｜康貓 Alfred Kang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#211d1b; --muted:#6b6b6b; --soft:#9a9a9a;
+    --line:#e6e6e6; --line2:#efefef;
+    --blue:#2f4fb0; --blue-700:#22397f; --blue-300:#7d95d8; --blue-50:#eef2fb;
+    --bg:#FBFAF7; --paper:#f4f5f9; --warn:#9A6700; --danger:#c0392b;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;width:100%;overflow:hidden;background:#e9ebef;}
+  body{font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei','Heiti TC',sans-serif;
+       color:var(--ink);-webkit-font-smoothing:antialiased;}
+  body:focus{outline:none;}
+
+  #stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;
+         transform-origin:center center;background:var(--bg);overflow:hidden;}
+
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;
+         background:var(--bg);padding:54px 148px 60px 88px;}
+  .slide.active{display:flex;}
+  .slide .body{flex:1;display:flex;flex-direction:column;justify-content:center;}
+  .slide.mid .body{align-items:center;text-align:center;}
+
+  /* ---- 高橋流：大字主張＋一行白話補述 ---- */
+  .big{font-size:80px;font-weight:900;line-height:1.14;letter-spacing:-1.5px;color:var(--ink);}
+  .big.xl{font-size:104px;line-height:1.06;}
+  .big.sm{font-size:60px;line-height:1.2;}
+  .big em{font-style:normal;color:var(--blue);}
+  .big s{text-decoration:none;position:relative;color:var(--soft);}
+  .big s::after{content:"";position:absolute;left:-8px;right:-8px;top:50%;height:9px;
+                background:var(--danger);border-radius:5px;transform:rotate(-4deg);}
+  /* P3 三拍校對梗：①「媽的多重宇宙」②「媽」劃掉補「貓」③ 塞入「AI」 */
+  .joke{padding-top:.52em;}
+  .swap{position:relative;display:inline-block;transition:color .5s ease;}
+  .swap:has(.fix.on){color:var(--soft);}          /* 被劃掉後轉灰 */
+  .fix{position:absolute;inset:0;pointer-events:none;}
+  .fix::before{content:"";position:absolute;left:-8px;right:-8px;top:50%;height:9px;
+               background:var(--danger);border-radius:5px;transform:rotate(-4deg);}
+  .hand{position:absolute;left:50%;top:-.60em;transform:translateX(-50%) rotate(-7deg);
+        font-family:'Yuanti TC','Kaiti TC','STKaiti','BiauKai','cursive';
+        font-style:normal;font-weight:700;font-size:.70em;line-height:1;
+        color:var(--danger);white-space:nowrap;}
+  /* 「AI」是「塞進去」的：未浮現時不佔寬度，出現時把後面的字推開 */
+  .step.ins{display:inline-block;max-width:0;overflow:hidden;transform:none;
+            color:var(--blue);vertical-align:baseline;
+            transition:max-width .55s ease,opacity .45s ease .12s;}
+  .step.ins.on{max-width:3.6em;transform:none;}
+  .sub{font-size:25px;font-weight:500;line-height:1.6;color:var(--muted);margin-top:26px;max-width:940px;}
+  .slide.mid .sub{margin-left:auto;margin-right:auto;}
+  .sub b{color:var(--ink);font-weight:700;}
+
+  .kicker{display:inline-flex;align-items:center;gap:11px;font-size:17px;font-weight:700;
+          letter-spacing:3px;color:var(--blue);}
+  .kicker::before{content:"";width:30px;height:3px;border-radius:2px;background:var(--blue);}
+  .slide.mid .kicker{justify-content:center;}
+
+  /* ---- 段落題（宇宙一／二／三 ＋ 場景名） ---- */
+  .sect{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+        text-align:center;}
+  .sect .no{font-size:106px;font-weight:900;line-height:1;color:var(--blue);letter-spacing:4px;}
+  .sect .tx .t{font-size:82px;font-weight:900;line-height:1.12;letter-spacing:-1.5px;margin-top:18px;}
+  .sect .tx .d{font-size:23px;color:var(--muted);margin-top:18px;font-weight:500;}
+
+  /* ---- 封面 ---- */
+  .cover{flex:1;display:flex;flex-direction:column;justify-content:center;gap:20px;}
+  .cover .ep{display:inline-flex;align-items:center;gap:13px;font-size:17px;font-weight:700;
+             letter-spacing:2.5px;color:var(--blue);}
+  .cover .ep .bar{width:1px;height:17px;background:var(--line);}
+  .cover .ep .n{background:var(--blue);color:#fff;border-radius:6px;padding:4px 11px;letter-spacing:1.5px;}
+  .cover h1{font-size:112px;font-weight:900;line-height:1.04;letter-spacing:-3px;}
+  .cover h1 em{font-style:normal;color:var(--blue);}
+  .cover .tagline{font-size:27px;font-weight:500;color:var(--muted);line-height:1.55;max-width:900px;}
+  .cover .tagline b{color:var(--ink);font-weight:700;}
+  .cover .meta{border-top:1px solid var(--line);margin-top:12px;padding-top:20px;
+               display:flex;justify-content:space-between;align-items:flex-end;}
+  .cover .who{font-size:29px;font-weight:900;}
+  .cover .who span{font-size:19px;font-weight:500;color:var(--muted);margin-left:12px;}
+  .cover .when{text-align:right;font-size:17px;line-height:1.75;color:var(--muted);}
+  .cover .when b{color:var(--ink);font-weight:700;}
+
+  /* ---- 逐條浮現清單 ---- */
+  .list{display:flex;flex-direction:column;gap:15px;margin-top:8px;}
+  .list .it{display:flex;align-items:center;gap:19px;font-size:38px;font-weight:800;line-height:1.3;}
+  .list .it .ic{flex:none;width:56px;height:56px;border-radius:15px;background:var(--blue-50);
+                color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:26px;}
+  .list .it .note{font-size:20px;font-weight:500;color:var(--muted);margin-left:6px;}
+  .list .it.star .ic{background:var(--blue);color:#fff;}
+  .list .it.star{color:var(--blue);}
+
+  /* ---- 三層架構主視覺（P13 / P34，同圖不同高亮） ---- */
+  /* DOM 順序＝Prompt→Context→Harness（浮現順序，由下而上）；
+     column-reverse 讓視覺堆疊回到 Harness 在上 */
+  .layers{display:flex;flex-direction:column-reverse;gap:14px;width:900px;margin:0 auto;}
+  .layers .ly{display:flex;align-items:center;gap:24px;border:2px solid var(--line);
+              border-radius:18px;padding:24px 32px;background:#fff;transition:.4s;}
+  .layers .ly .yr{flex:none;font-size:20px;font-weight:900;color:var(--soft);letter-spacing:1px;width:74px;}
+  .layers .ly .nm{font-size:44px;font-weight:900;letter-spacing:-1px;color:var(--ink);}
+  .layers .ly .ds{margin-left:auto;font-size:20px;font-weight:500;color:var(--muted);text-align:right;}
+  /* .hl＝高亮（P34 用），與 .step 的 .on＝已浮現 分開，避免兩者互相污染 */
+  .layers .ly.hl{border-color:var(--blue);background:var(--blue-50);
+                 box-shadow:0 10px 26px rgba(47,79,176,.13);}
+  .layers .ly.hl .nm,.layers .ly.hl .yr{color:var(--blue);}
+  .layers .ly.dim{opacity:.42;}
+
+  /* ---- 左文右圖 ---- */
+  .split{flex-direction:row!important;align-items:center;gap:54px;}
+  .split .tx{flex:1;min-width:0;}
+  .photo{flex:none;width:452px;margin:0;border-radius:16px;overflow:hidden;
+         box-shadow:0 16px 40px rgba(30,35,60,.16);transform:rotate(-1.6deg);
+         border:7px solid #fff;}
+  .photo img{display:block;width:100%;height:auto;}
+  .photo figcaption{font-size:14px;color:var(--soft);padding:9px 12px 3px;text-align:center;}
+
+  /* ---- 插圖（未產出時自動退回 CSS 版） ---- */
+  .illus{display:flex;align-items:center;justify-content:center;}
+  .illus img{max-width:100%;max-height:330px;object-fit:contain;}
+  .illus .fb{display:none;}
+  .illus.noimg img{display:none;}
+  .illus.noimg .fb{display:flex;}
+  .universe{display:flex;align-items:center;justify-content:center;gap:-20px;position:relative;height:300px;}
+  .universe .u{width:172px;height:172px;border-radius:50%;border:3px solid var(--blue-300);
+               display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;
+               color:var(--blue-700);background:rgba(47,79,176,.05);margin-left:-26px;}
+  .universe .u:first-child{margin-left:0;}
+  .universe .me{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+                width:66px;height:66px;border-radius:50%;background:var(--ink);color:#fff;
+                display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;
+                border:5px solid var(--bg);}
+
+  /* ---- 安全故事一：指令 → 慘案 ---- */
+  .say{font-size:50px;font-weight:700;color:var(--soft);letter-spacing:-1px;}
+  .fall{font-size:40px;color:var(--blue-300);line-height:1;margin:14px 0;}
+  .boom{font-size:92px;font-weight:900;color:var(--danger);letter-spacing:-2px;line-height:1.1;}
+
+  /* ---- 安全故事二：排隊被插隊 ---- */
+  .queue{display:flex;align-items:center;justify-content:center;gap:13px;}
+  .q{width:112px;height:82px;border-radius:14px;border:2px solid var(--line);background:#fff;
+     display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:900;
+     color:var(--muted);position:relative;}
+  .q.me{border-color:var(--blue);background:var(--blue-50);color:var(--blue);}
+  .q.gone{opacity:.45;}
+  .q.gone::after{content:"";position:absolute;left:8px;right:8px;top:50%;height:5px;
+                 border-radius:3px;background:var(--danger);transform:rotate(-9deg);}
+
+  /* ---- P19 塑人：Agent ｜ Skill ---- */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:22px;width:1000px;margin:0 auto;}
+  .duo .col{border:2px solid var(--line);border-left:6px solid var(--blue);border-radius:16px;
+            padding:24px 26px;background:#fff;text-align:left;}
+  .duo .col .lbl{font-size:34px;font-weight:900;color:var(--blue);letter-spacing:-.5px;}
+  .duo .col .ttl{font-size:23px;font-weight:800;margin:6px 0 10px;}
+  .duo .col p{font-size:18px;line-height:1.6;color:var(--muted);}
+
+  /* ---- P20 工具牆 ---- */
+  .tools{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;width:1010px;margin:0 auto;}
+  .tools .t{border:2px solid var(--line);border-radius:16px;padding:17px 22px;background:#fff;
+            text-align:left;display:flex;flex-direction:column;gap:5px;}
+  .tools .t .n{font-size:25px;font-weight:900;color:var(--blue);line-height:1.15;}
+  .tools .t .d{font-size:19px;font-weight:800;color:var(--ink);}
+  .tools .t .d span{display:block;font-size:16px;font-weight:500;color:var(--muted);margin-top:3px;}
+
+  /* ---- P25 約束條件 ---- */
+  .cons{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:1010px;margin:0 auto;}
+  .cons .c{border:2px solid var(--line);border-radius:15px;padding:18px 16px;background:#fff;}
+  .cons .c .ic{font-size:30px;line-height:1;}
+  .cons .c .x{font-size:20px;font-weight:800;margin-top:9px;line-height:1.35;}
+  .cons .c .y{font-size:15px;color:var(--muted);margin-top:5px;line-height:1.45;}
+
+  /* ---- P26／P27 文件卡片（原文引用，非截圖） ---- */
+  .docs{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:1030px;margin:0 auto;text-align:left;}
+  .doc{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;
+       box-shadow:0 8px 22px rgba(30,35,60,.07);}
+  .doc .fn{background:var(--paper);border-bottom:1px solid var(--line);padding:9px 15px;
+           font-size:14px;font-weight:700;color:var(--muted);
+           font-family:'SF Mono','Menlo',monospace;}
+  .doc .bd{padding:15px 18px;font-size:17px;line-height:1.62;color:var(--ink);}
+  .doc .bd .quote{color:var(--blue-700);font-weight:700;}
+  .doc .bd .m{color:var(--muted);font-size:15px;}
+  .doc .gate{display:flex;align-items:center;gap:12px;border:2px solid var(--danger);
+             border-radius:10px;padding:11px 14px;background:#fdf3f2;}
+  .doc .gate .k{font-size:15px;font-weight:900;color:var(--danger);flex:none;}
+  .doc .gate .v{font-size:17px;font-weight:800;}
+  .doc .gate .v span{display:block;font-size:14px;font-weight:600;color:var(--danger);margin-top:2px;}
+
+  /* ---- P27 每週交卷的收據 ---- */
+  .files{display:inline-flex;flex-direction:column;gap:7px;text-align:left;
+         border:1px solid var(--line);border-radius:14px;background:#fff;padding:17px 22px;
+         box-shadow:0 8px 22px rgba(30,35,60,.07);}
+  .files .f{font-family:'SF Mono','Menlo',monospace;font-size:17px;color:var(--ink);
+            display:flex;align-items:center;gap:10px;}
+  .files .f::before{content:"📄";font-size:15px;}
+
+  /* ---- P30 鉤子：安全邊際崩塌 ---- */
+  .hook{display:flex;align-items:center;justify-content:center;gap:34px;}
+  .hook .n{font-size:170px;font-weight:900;line-height:1;letter-spacing:-6px;}
+  .hook .from{color:var(--soft);}
+  .hook .to{color:var(--danger);}
+  .hook .ar{font-size:80px;color:var(--soft);}
+
+  /* ---- P32 圓桌名單 ---- */
+  .seats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:1020px;margin:0 auto;}
+  .seats .s{border:2px solid var(--line);border-radius:14px;padding:14px 12px;background:#fff;}
+  .seats .s .nm{font-size:21px;font-weight:900;line-height:1.15;}
+  .seats .s .en{font-size:13px;color:var(--soft);font-weight:600;margin-top:3px;letter-spacing:.2px;}
+  .seats .s .ph{font-size:15px;color:var(--blue);font-weight:700;margin-top:5px;}
+  .outer{margin-top:14px;font-size:17px;color:var(--muted);}
+  .outer b{color:var(--ink);}
+
+  /* ---- P33 指令（與影片 B 裡打進去的一字不差） ---- */
+  .cmd{display:inline-block;background:#1d2330;color:#e8ecf5;border-radius:14px;
+       padding:26px 34px;font-family:'SF Mono','Menlo',monospace;font-size:34px;
+       font-weight:600;line-height:1.45;text-align:left;box-shadow:0 14px 34px rgba(20,25,45,.25);}
+  .cmd .p{color:#6ee7a8;}
+
+  /* ---- P35 兩條路 ---- */
+  .paths{display:grid;grid-template-columns:1fr 1fr;gap:22px;width:980px;margin:0 auto;text-align:left;}
+  .paths .p{border:2px solid var(--line);border-radius:16px;padding:24px 26px;background:#fff;}
+  .paths .p .h{font-size:30px;font-weight:900;color:var(--blue);}
+  .paths .p .k{font-size:19px;font-weight:700;margin-top:9px;}
+  .paths .p .k span{display:block;font-size:17px;font-weight:500;color:var(--muted);margin-top:5px;}
+
+  /* ---- P37 謝幕 ---- */
+  .thanks{font-size:118px;font-weight:900;letter-spacing:.05em;line-height:1;}
+  .thanks em{font-style:normal;color:var(--blue);}
+  .qr-row{display:flex;align-items:center;gap:22px;margin-top:30px;}
+  .qr-row img{width:150px;height:150px;border:1px solid var(--line);border-radius:12px;
+              padding:8px;background:#fff;}
+  .qr-row .t{text-align:left;}
+  .qr-row .t b{font-size:22px;}
+  .qr-row .t span{display:block;font-size:16px;color:var(--muted);margin-top:5px;
+                  font-family:'SF Mono','Menlo',monospace;}
+
+  /* ---- P23 年份大字 ---- */
+  .year{font-size:250px;font-weight:900;line-height:.9;color:var(--blue-300);letter-spacing:-8px;}
+
+  /* ---- P2 意象頁：直式海報＋深藍底（直式輪廓才認得出那部電影） ---- */
+  .slide.poster{background:#0C1B44;padding:0;flex-direction:row;align-items:center;}
+  .poster-wrap{display:flex;align-items:center;gap:58px;height:100%;padding:36px 84px;width:100%;}
+  .poster-wrap img{height:100%;width:auto;border-radius:10px;
+                   box-shadow:0 22px 54px rgba(0,0,0,.55);}
+  .poster-tx{flex:1;min-width:0;}
+  .poster-tx .l{font-size:56px;font-weight:900;color:#fff;line-height:1.24;letter-spacing:-1px;}
+  .poster-tx .l em{font-style:normal;color:#ffd45e;}
+  .poster-tx .s{font-size:20px;color:rgba(255,255,255,.68);margin-top:20px;letter-spacing:.4px;
+                line-height:1.5;}
+  /* 收束頁：與 P2 鏡像（圖右文左），形成首尾書擋 */
+  .slide.poster.rev .poster-wrap{flex-direction:row-reverse;}
+  .poster-tx .l2{font-size:34px;font-weight:800;color:#fff;margin-top:18px;line-height:1.4;}
+  .poster-tx .l2 em{font-style:normal;color:#ffd45e;}
+
+  /* ---- 意象頁：滿版圖＋壓字 ---- */
+  .slide.hero{padding:0;}
+  .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;}
+  .hero-veil{position:absolute;inset:0;
+             background:linear-gradient(180deg,rgba(12,14,26,.10) 0%,rgba(12,14,26,.22) 46%,rgba(12,14,26,.86) 100%);}
+  .hero-tx{position:absolute;left:0;right:0;bottom:92px;text-align:center;padding:0 70px;}
+  .hero-tx .l{font-size:62px;font-weight:900;color:#fff;line-height:1.2;letter-spacing:-1px;
+              text-shadow:0 3px 22px rgba(0,0,0,.5);}
+  .hero-tx .l em{font-style:normal;color:#ffd45e;}
+  .hero-tx .s{font-size:23px;font-weight:500;color:rgba(255,255,255,.9);margin-top:14px;
+              text-shadow:0 2px 14px rgba(0,0,0,.55);}
+  /* 收束頁：文字置中、遮罩加重（字多需要更高對比） */
+  .hero-veil.end{background:linear-gradient(180deg,rgba(10,12,24,.42) 0%,rgba(10,12,24,.62) 45%,rgba(10,12,24,.88) 100%);}
+  .hero-tx.mid-tx{top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;}
+  .hero-tx .l2{font-size:36px;font-weight:800;color:#fff;margin-top:20px;line-height:1.35;
+               text-shadow:0 3px 18px rgba(0,0,0,.55);}
+  .hero-tx .l2 em{font-style:normal;color:#ffd45e;}
+
+  /* ---- Hermes ---- */
+  .hermes{width:190px;height:190px;border-radius:22px;object-fit:cover;
+          border:3px solid var(--line);background:#fff;}
+
+  /* ---- 品牌標記 ---- */
+  /* 扶輪社場合不放公司 logo；右上角僅在封面放社徽 */
+  .logo-tr{position:absolute;top:44px;right:60px;opacity:.95;}
+  .rcgn{height:74px;}
+
+  /* ---- 頁內分段浮現 ---- */
+  .step{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;}
+  .step.on{opacity:1;transform:none;}
+
+  /* ---- DEMO 影片按鈕 ---- */
+  .demo-btn{display:inline-flex;align-items:center;gap:11px;font-family:inherit;font-size:20px;
+            font-weight:800;color:#fff;background:var(--blue);border:none;border-radius:13px;
+            padding:15px 28px;cursor:pointer;box-shadow:0 6px 16px rgba(47,79,176,.28);
+            transition:background .2s,transform .1s;margin-top:30px;}
+  .demo-btn:hover{background:var(--blue-700);} .demo-btn:active{transform:translateY(1px);}
+  .demo-hint{font-size:16px;color:var(--soft);margin-top:14px;}
+
+  #vplayer{position:fixed;inset:0;z-index:90;background:#000;display:none;
+           align-items:center;justify-content:center;}
+  #vplayer.on{display:flex;}
+  #vplayer video{width:100%;height:100%;object-fit:contain;background:#000;}
+  #vplayer .vclose{position:absolute;top:18px;right:22px;font-size:22px;line-height:1;color:#fff;
+                   background:rgba(255,255,255,.16);border:none;border-radius:10px;padding:6px 14px;cursor:pointer;}
+  #vplayer .vclose:hover{background:rgba(255,255,255,.3);}
+
+  /* ---- 黑屏（簡報筆 B／. 鍵） ---- */
+  #blackout{position:fixed;inset:0;z-index:95;background:#000;display:none;}
+  #blackout.on{display:block;}
+
+  /* ---- 導覽 ---- */
+  .navbar{position:fixed;right:24px;bottom:16px;display:flex;align-items:center;gap:10px;
+          z-index:40;color:var(--muted);user-select:none;}
+  .navbar .nav-arrow{border:none;background:none;cursor:pointer;line-height:1;font-size:26px;
+                     color:var(--soft);padding:2px 9px;border-radius:8px;transition:.2s;}
+  .navbar .nav-arrow:hover{color:var(--blue);background:var(--blue-50);}
+  .navbar .nav-count{font-size:15px;font-weight:700;letter-spacing:.12em;min-width:64px;
+                     text-align:center;color:var(--muted);}
+  .navbar .nav-count b{color:var(--ink);}
+  .progress{position:fixed;left:0;bottom:0;height:3px;background:var(--blue);width:0;
+            transition:width .35s ease;z-index:40;}
+  /* 深色頁（.dark）：導覽改淺色，否則深墨色頁碼會消失在圖上 */
+  body.on-hero .navbar .nav-arrow{color:rgba(255,255,255,.7);}
+  body.on-hero .navbar .nav-count{color:rgba(255,255,255,.75);}
+  body.on-hero .navbar .nav-count b{color:#fff;}
+  body.on-hero .progress{background:#ffd45e;}
+  #help{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:30;
+        background:rgba(34,57,127,.94);color:#fff;font-size:13px;padding:8px 16px;
+        border-radius:999px;transition:opacity .6s;}
+</style>
+</head>
+<body tabindex="-1">
+<div id="stage">
+
+  <!-- ═══════════ 開場 P1-P3 ═══════════ -->
+
+  <!-- P1 封面 -->
+  <section class="slide" data-page="1">
+    <img src="assets/rcgn-logo.png" class="logo-tr rcgn" alt="台北市新世代扶輪社"
+         onerror="this.style.display='none'">
+    <div class="cover">
+      <div class="ep">
+        <span>新世代 AI 工作坊 三部曲</span>
+        <span class="bar"></span>
+        <span class="n">EPISODE 1</span>
+      </div>
+      <h1>貓的 <em>AI</em> 多重宇宙</h1>
+      <div class="tagline">爸媽的 LINE、投資的策略、週末旅遊行程<br><b>一套心法打遍天下！</b></div>
+      <div class="meta">
+        <div class="who">康貓 PP<span>Alfred Kang</span></div>
+        <div class="when">
+          <b>2026.08.20（四）18:30</b><br>
+          台北市新世代扶輪社 · 華山町餐酒館
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P2 意象頁：直式海報（保留電影海報的直式輪廓，才認得出來）＋深藍底 -->
+  <section class="slide poster dark" data-page="2">
+    <div class="poster-wrap">
+      <img src="assets/multiverse-me.png" alt="多重宇宙裡的每一個我">
+      <div class="poster-tx">
+        <div class="l">無論在哪一個宇宙<br>你都<em>有辦法搞定</em></div>
+        <div class="s">Everything Everywhere All at Once</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P3 接梗頁（三拍：媽的多重宇宙 → 貓 → 塞入 AI → tagline） -->
+  <section class="slide mid" data-page="3">
+    <div class="body">
+      <div class="big xl joke"><span class="swap">媽<span class="fix step"><i class="hand">貓</i></span></span>的<span
+        class="step ins">&nbsp;AI&nbsp;</span>多重宇宙</div>
+      <div class="sub step">今天要講的，是<b>貓的 AI 多重宇宙</b>。</div>
+    </div>
+  </section>
+
+  <!-- P4 你的多重宇宙 ⭐ -->
+  <section class="slide mid" data-page="4">
+    <div class="body">
+      <!-- P3 插圖為純 CSS 版（8/13 Alfred 拍板，不走 gen-images） -->
+      <div class="universe" style="margin-bottom:30px">
+        <div class="u">事業</div>
+        <div class="u">家庭</div>
+        <div class="u">爸媽</div>
+        <div class="u">投資</div>
+        <div class="me">你</div>
+      </div>
+      <div class="big sm">每個宇宙都有做不完的事<br>但每個宇宙裡，<em>只有一個你</em></div>
+    </div>
+  </section>
+
+  <!-- ═══════════ 宇宙一：爸媽的 LINE P5-P11 ═══════════ -->
+
+  <!-- P5 段落題 -->
+  <section class="slide" data-page="5">
+    <div class="sect">
+      <div class="no">宇宙一</div>
+      <div class="tx">
+        <div class="t">爸媽的 LINE</div>
+        <div class="d">從我爸媽家的牆壁開始講</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P6 紙本月曆的困境（實拍：已模糊去識別化＋清除 EXIF，詳見 instruction.md） -->
+  <section class="slide" data-page="6">
+    <div class="body split">
+      <div class="tx">
+        <div class="kicker">宇宙一</div>
+        <div class="big sm" style="margin-top:24px">全家的行程<br>掛在牆上<br>那本<em>月曆</em>裡</div>
+        <div class="sub">有照片可以看，很好——<br>但人不在月曆前面，就是忘記</div>
+      </div>
+      <figure class="photo">
+        <img src="assets/real-calendar.jpg" alt="爸媽家牆上的紙本月曆">
+      </figure>
+    </div>
+  </section>
+
+  <!-- P7 理想解法落空 -->
+  <section class="slide mid" data-page="7">
+    <div class="body">
+      <div class="big">我學得會<br>不代表<em>他們</em>學得會</div>
+      <div class="sub">那是<b>我的</b>理想解法，不是<b>他們的</b>解法</div>
+    </div>
+  </section>
+
+  <!-- P8 最低摩擦 ⭐ -->
+  <section class="slide mid" data-page="8">
+    <div class="body">
+      <div class="big xl">不教新工具<br><em>住進舊習慣</em></div>
+      <div class="sub">我爸媽每天一定會打開的，就是 LINE。那 AI 就住在 LINE 裡。</div>
+    </div>
+  </section>
+
+  <!-- P9 越想越多，最終收斂 ⭐（逐條浮現） -->
+  <section class="slide" data-page="9">
+    <div class="body">
+      <div class="kicker">一開始只想做行程提醒</div>
+      <div class="list" style="margin-top:30px">
+        <div class="it step"><div class="ic">🗓</div>行程提醒<span class="note">前兩天／前一晚／當天早上</span></div>
+        <div class="it step"><div class="ic">☀️</div>今日天氣</div>
+        <div class="it step"><div class="ic">🙏</div>拜拜提醒<span class="note">初一十五、重大節日</span></div>
+        <div class="it step star"><div class="ic">🌅</div>早安圖<span class="note">每天自己生一張</span></div>
+        <div class="it step"><div class="ic">💬</div>隨便他們問</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P10 【影片】它現在每天這樣陪我爸媽 ⭐ -->
+  <section class="slide mid" data-page="10"
+           data-video="demos/demo1/demo1.mp4" data-rate="1.25">
+    <div class="body">
+      <div class="kicker">實際畫面，沒有加工</div>
+      <div class="big" style="margin-top:26px">它現在<br>每天這樣<em>陪我爸媽</em></div>
+      <button class="demo-btn" onclick="playSlideVideo(this)"><span class="ic">▶</span>播放實錄</button>
+      <div class="demo-hint">語音記行程 → 自動進 Google Calendar → 每日晨間回報 → 拜拜提醒</div>
+    </div>
+  </section>
+
+  <!-- P11 這個分身叫 Hermes（logo 取自 ~/hermes-slides 用過的 Nous Research 吉祥物） -->
+  <section class="slide" data-page="11">
+    <div class="body split">
+      <div class="tx">
+        <div class="big sm">這個分身叫<br><em>Hermes</em></div>
+        <div class="sub">會自己學新招、記得住跟它講過的事</div>
+        <div class="sub" style="margin-top:16px;font-size:22px">
+          今年初<b>小龍蝦（OpenClaw）</b>爆紅之後出現的新一代開源分身。
+        </div>
+      </div>
+      <img src="assets/hermes.png" class="hermes" alt="Hermes" style="flex:none">
+    </div>
+  </section>
+
+  <!-- ═══════════ 心法：三層架構 P12-P23 ═══════════ -->
+
+  <!-- P12 轉場 -->
+  <section class="slide mid" data-page="12">
+    <div class="body">
+      <div class="big">這個分身<br>是怎麼<em>長出來</em>的？</div>
+      <div class="sub">不是魔法，是三層</div>
+    </div>
+  </section>
+
+  <!-- P13 三層總覽 ⭐（主視覺，全場第 1 次） -->
+  <section class="slide mid" data-page="13">
+    <div class="body">
+      <div class="kicker">心法</div>
+      <div class="layers" style="margin-top:34px">
+        <div class="ly step"><span class="yr">2024</span><span class="nm">Prompt</span>
+             <span class="ds">學怎麼問問題</span></div>
+        <div class="ly step"><span class="yr">2025</span><span class="nm">Context</span>
+             <span class="ds">給它來龍去脈</span></div>
+        <div class="ly step"><span class="yr">2026</span><span class="nm">Harness</span>
+             <span class="ds">給它裝上手腳</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P14 Prompt（2024） -->
+  <section class="slide mid" data-page="14">
+    <div class="body">
+      <div class="kicker">第一層 · 2024</div>
+      <div class="big" style="margin-top:24px"><em>Prompt</em><br>你怎麼「問」它</div>
+      <div class="sub">生成式 AI 的本質是<b>文字接龍</b>：你起頭，它接下去<br>
+        這也是為什麼它有時候數學不太好——它不是在計算，是在接話</div>
+    </div>
+  </section>
+
+  <!-- P15 安全故事一：它把信箱清空了 -->
+  <section class="slide mid" data-page="15">
+    <div class="body">
+      <div class="kicker">安全故事 ①</div>
+      <div class="say" style="margin-top:30px">「幫我整理 email」</div>
+      <div class="fall">↓</div>
+      <div class="boom step">收件匣：0 封</div>
+      <div class="sub">今年初爆紅的小龍蝦（OpenClaw）——紅到聽說 Mac mini 都缺貨的那個。<br>
+        它很認真地理解了「整理」這兩個字。</div>
+    </div>
+  </section>
+
+  <!-- P16 安全故事二：它做到了——用你不敢用的方法 -->
+  <section class="slide mid" data-page="16">
+    <div class="body">
+      <div class="kicker">安全故事 ②</div>
+      <div class="big sm" style="margin-top:20px">排第四的預約<br>變成了<em>第一</em></div>
+      <div class="queue" style="margin-top:30px">
+        <div class="q">1</div><div class="q">2</div><div class="q">3</div>
+        <div class="q me">我</div>
+      </div>
+      <div class="fall step">↓</div>
+      <div class="queue step">
+        <div class="q me">我</div>
+        <div class="q gone">1</div><div class="q gone">2</div><div class="q gone">3</div>
+      </div>
+      <div class="sub">它找到系統的 API 漏洞，把排在前面的人全部移掉了。<br>
+        注意：<b>它完成了任務</b>，prompt 一個字都沒下錯。</div>
+    </div>
+  </section>
+
+  <!-- P17 Context（2025） -->
+  <section class="slide mid" data-page="17">
+    <div class="body">
+      <div class="kicker">第二層 · 2025</div>
+      <div class="big" style="margin-top:24px"><em>Context</em><br>它對你的事了解多深</div>
+      <div class="sub">同一個問題，了解你的人和不了解你的人，答案天差地遠<br>
+        <b>差別不在它多聰明，在它多了解你</b></div>
+    </div>
+  </section>
+
+  <!-- P18 Context 的限制：桌面有限 -->
+  <section class="slide" data-page="18">
+    <div class="body split">
+      <div class="tx">
+        <div class="kicker">Context 的限制</div>
+        <div class="big sm" style="margin-top:24px">它的桌面<br>是<em>有限</em>的</div>
+        <div class="sub">塞太多，舊的會被擠掉、<br>重點會被稀釋</div>
+      </div>
+      <div class="illus" style="flex:none;width:560px">
+        <img src="assets/desk-overflow.png" alt="會議桌被文件淹沒，舊文件掉到地上"
+             style="max-height:420px;border-radius:14px">
+      </div>
+    </div>
+  </section>
+
+  <!-- P19 Harness（2026） -->
+  <section class="slide mid" data-page="19">
+    <div class="body">
+      <div class="kicker">第三層 · 2026</div>
+      <div class="big" style="margin-top:24px"><em>Harness</em><br>給它裝上手腳</div>
+      <div class="sub">光會聊天不會做事的，叫聊天機器人<br>
+        裝上工具、能真的動手的，才叫<b>分身</b></div>
+    </div>
+  </section>
+
+  <!-- P20 先塑造「人」：Agent ＋ Skill ⭐ -->
+  <section class="slide mid" data-page="20">
+    <div class="body">
+      <div class="big sm">有手有腳<br>還不是<em>一個人</em></div>
+      <div class="duo" style="margin-top:34px">
+        <div class="col step">
+          <div class="lbl">Agent</div>
+          <div class="ttl">你請的數位員工</div>
+          <p>職位、個性、背景——謹慎的照護助理，還是大膽的點子王？<b>我說了算</b>。</p>
+        </div>
+        <div class="col step">
+          <div class="lbl">Skill</div>
+          <div class="ttl">交接給他的 SOP 手冊</div>
+          <p>做事的方法寫成一份一份手冊，必要時附上工具程式。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P21 再發「工具」⭐ -->
+  <section class="slide mid" data-page="21">
+    <div class="body">
+      <div class="big sm">人對了<br>再<em>發傢伙</em></div>
+      <div class="tools" style="margin-top:30px">
+        <div class="t step"><span class="n">MCP</span>
+          <span class="d">門禁卡<span>能進哪些系統、碰哪些資料，你決定</span></span></div>
+        <div class="t step"><span class="n">CLI</span>
+          <span class="d">工具箱<span>桌上各種現成的小工具</span></span></div>
+        <div class="t step"><span class="n">Computer Use</span>
+          <span class="d">直接給他一台電腦<span>滑鼠鍵盤自己操作</span></span></div>
+        <div class="t step"><span class="n">Workflow</span>
+          <span class="d">標準流程<span>事情怎麼串、做到哪算完</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P22 孫悟空 ⭐（回收 P3 伏筆） -->
+  <section class="slide mid" data-page="22">
+    <div class="body">
+      <div class="illus" style="margin-bottom:22px">
+        <img src="assets/monkey-clones.png" alt="猴王拔毫毛吹出一群各拿工具的分身"
+             style="max-height:400px;border-radius:14px">
+      </div>
+      <div class="big sm">拔一把毫毛<br>吹出<em>一群分身</em></div>
+    </div>
+  </section>
+
+  <!-- P23 互動轉折 ⭐ -->
+  <section class="slide mid" data-page="23">
+    <div class="body">
+      <div class="year">2024？</div>
+      <div class="big" style="margin-top:18px">你的 AI 用法<br>還停在<em>哪一年</em>？</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ 宇宙二：全家的週末 P24-P27 ═══════════ -->
+
+  <!-- P24 段落題 -->
+  <section class="slide" data-page="24">
+    <div class="sect">
+      <div class="no">宇宙二</div>
+      <div class="tx">
+        <div class="t">全家的週末</div>
+        <div class="d">每個週五晚上的痛</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P25 每週五的頭痛 -->
+  <section class="slide mid" data-page="25">
+    <div class="body">
+      <div class="big sm">每週五都要重新想一次<br><em>明天去哪？</em></div>
+      <div class="cons" style="margin-top:34px">
+        <div class="c"><div class="ic">📅</div><div class="x">只有週六</div>
+          <div class="y">下午才藝課要趕回來</div></div>
+        <div class="c"><div class="ic">👵</div><div class="x">爸媽的腿力</div>
+          <div class="y">不能走太多路，各有偏好</div></div>
+        <div class="c"><div class="ic">🌦</div><div class="x">天氣</div>
+          <div class="y">熱、雷陣雨都要算進去</div></div>
+        <div class="c"><div class="ic">🚗</div><div class="x">車程</div>
+          <div class="y">不能太遠</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P26 它知道我家（文件卡片＝原文引用，非截圖；家人名字已遮） -->
+  <section class="slide mid" data-page="26">
+    <div class="body">
+      <div class="big sm">它知道我小孩<br><em>幾點要上課</em></div>
+      <div class="sub" style="margin-top:16px">也知道我媽怕熱、我爸要面子</div>
+      <div class="docs" style="margin-top:26px">
+        <div class="doc">
+          <div class="fn">2026-07-19-週日.md</div>
+          <div class="bd">
+            <span class="m">爸爸怕冷不怕曬——強冷氣室內要<b>幫他帶件薄外套</b>。</span><br><br>
+            <span class="quote">「把訂位動作留給爸爸——餵他『我訂得到位、我帶你們去』的特權感。」</span>
+          </div>
+        </div>
+        <div class="doc">
+          <div class="fn">2026-08-15-週六.md</div>
+          <div class="bd">
+            <div class="gate">
+              <div class="k">回家閘門</div>
+              <div class="v">15:00 前到家（15:30 鼓課）
+                <span>本案最硬的紅線</span></div>
+            </div>
+            <div class="m" style="margin-top:11px">每個方案都自己做「回家驗算」，<br>絕不排四點才結束的行程。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P27 【影片】一句話，三個方案 ⭐（頁內三段：大字 → 影片 → 每週交卷的收據） -->
+  <section class="slide mid" data-page="27" data-video="demos/demo2/demo2.mp4">
+    <div class="body">
+      <div class="big sm">每週四<br>交<em>三個方案</em>給我挑</div>
+      <div class="sub" style="margin-top:14px">我只負責拍板</div>
+      <button class="demo-btn" onclick="playSlideVideo(this)"><span class="ic">▶</span>播放實錄</button>
+      <div class="step" style="margin-top:26px">
+        <div class="files">
+          <div class="f">2026-07-04-週六.md</div>
+          <div class="f">2026-07-19-週日.md</div>
+          <div class="f">2026-07-25-一次性玩水.md</div>
+          <div class="f">2026-07-26-週日.md</div>
+          <div class="f">2026-08-08-週六.md</div>
+          <div class="f">2026-08-15-週六.md</div>
+          <div class="f">2026-08-17-溪頭三天兩夜.md</div>
+        </div>
+        <div class="sub" style="margin-top:14px">這不是為今天表演的——<b>它每週都交卷</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ 宇宙三：我的錢 P28-P33 ═══════════ -->
+
+  <!-- P28 段落題 -->
+  <section class="slide" data-page="28">
+    <div class="sect">
+      <div class="no">宇宙三</div>
+      <div class="tx">
+        <div class="t">我的錢</div>
+        <div class="d">今天最重要的一段</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P29 困擾（三個問句逐行浮現） -->
+  <section class="slide mid" data-page="29">
+    <div class="body">
+      <div class="big sm">每本書都有道理<br><em>但沒有一本認識我</em></div>
+      <div class="list" style="margin-top:32px;width:900px">
+        <div class="it step" style="font-size:29px">
+          <div class="ic">1</div>書上的建議，跟<b>我手上實際持有的東西</b>有什麼關係？</div>
+        <div class="it step" style="font-size:29px">
+          <div class="ic">2</div><b>我的個性</b>有沒有被放進去？我撐不撐得住波動？</div>
+        <div class="it step" style="font-size:29px">
+          <div class="ic">3</div>我是一個<b>什麼樣的人</b>？</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P30 鉤子 ⭐⭐（全場最重的一頁） -->
+  <section class="slide mid" data-page="30">
+    <div class="body">
+      <div class="kicker">我以為的安全邊際</div>
+      <div class="hook" style="margin-top:26px">
+        <div class="n from">11%</div>
+        <div class="ar">→</div>
+        <div class="n to step">1%</div>
+      </div>
+      <div class="sub step" style="margin-top:30px">
+        差在哪？我的 11% 是用「本金不賠」算的。<br>
+        它問我一句：<b>同樣的錢拿去買別的商品，賺到的報酬算不算你的成本？</b>
+      </div>
+    </div>
+  </section>
+
+  <!-- P31 【影片A】這個庫裡，裝的是「我」 ⭐ -->
+  <section class="slide mid" data-page="31"
+           data-video="demos/demo3/demo3-1-explain-investiment-base.mp4">
+    <div class="body">
+      <div class="big sm">這個庫裡<br>裝的是<em>「我」</em></div>
+      <div class="sub" style="margin-top:14px">回答剛剛那三個問題的，不是書——是這個庫</div>
+      <button class="demo-btn" onclick="playSlideVideo(this)"><span class="ic">▶</span>播放庫導覽</button>
+      <div class="demo-hint">Positions（真實部位）／Context（消化過的判準）／Agents（分身）／Skills（技能）</div>
+    </div>
+  </section>
+
+  <!-- P32 我為我的錢，請了一桌分身 ⭐（回收 P21 孫悟空） -->
+  <section class="slide mid" data-page="32">
+    <div class="body">
+      <div class="big sm">我為我的錢<br>請了<em>一桌分身</em></div>
+      <div class="sub" style="margin-top:12px">每一席一種投資哲學——而且立場互相打架</div>
+      <div class="seats" style="margin-top:24px">
+        <div class="s"><div class="nm">豪瑟</div><div class="en">Morgan Housel</div><div class="ph">守財</div></div>
+        <div class="s"><div class="nm">馬克斯</div><div class="en">Howard Marks</div><div class="ph">機會成本</div></div>
+        <div class="s"><div class="nm">柏格</div><div class="en">John Bogle</div><div class="ph">買了別動</div></div>
+        <div class="s"><div class="nm">塔雷伯</div><div class="en">Nassim Taleb</div><div class="ph">黑天鵝</div></div>
+        <div class="s"><div class="nm">蒙格</div><div class="en">Charlie Munger</div><div class="ph">集中重押</div></div>
+        <div class="s"><div class="nm">達利歐</div><div class="en">Ray Dalio</div><div class="ph">總經週期</div></div>
+        <div class="s"><div class="nm">澤爾</div><div class="en">Sam Zell</div><div class="ph">地產逆勢</div></div>
+        <div class="s"><div class="nm">呂宗耀</div><div class="en">台灣投資前輩</div><div class="ph">台灣實地</div></div>
+      </div>
+      <div class="outer">外圈候補：<b>稅務實務</b>、<b>資本效率</b>　·　開會不是全員都上，每次依議題請相關的三五席</div>
+    </div>
+  </section>
+
+  <!-- P33 【影片B】圓桌實況 ⭐（大字＝那行指令，與影片一字不差） -->
+  <section class="slide mid" data-page="33"
+           data-video="demos/demo3/demo3-2-call-a-roundtable-meeting.mp4">
+    <div class="body">
+      <div class="kicker">召開一場會，我只需要這一句</div>
+      <div class="cmd" style="margin-top:26px"><span class="p">/roundtable</span> 台幣若走升，<br>美元債該續抱還是設出場線？</div>
+      <button class="demo-btn" onclick="playSlideVideo(this)"><span class="ic">▶</span>播放圓桌實況</button>
+    </div>
+  </section>
+
+  <!-- ═══════════ 收束 P34-P37 ═══════════ -->
+
+  <!-- P34 一套心法 ⭐（三層圖第三次出現，每層掛問句） -->
+  <section class="slide mid" data-page="34">
+    <div class="body">
+      <div class="kicker">三個宇宙，做的是同一件事</div>
+      <div class="layers" style="margin-top:30px">
+        <div class="ly hl step"><span class="yr">2024</span><span class="nm">Prompt</span>
+             <span class="ds">我怎麼輸入給它？</span></div>
+        <div class="ly hl step"><span class="yr">2025</span><span class="nm">Context</span>
+             <span class="ds">我給它怎樣的來龍去脈？</span></div>
+        <div class="ly hl step"><span class="yr">2026</span><span class="nm">Harness</span>
+             <span class="ds">我給它哪些工具、哪些助手？</span></div>
+      </div>
+      <div class="sub" style="margin-top:24px">這三個問題不用會寫程式也能想——<b>而且值得每個人為自己的宇宙想一次</b></div>
+    </div>
+  </section>
+
+  <!-- P35 兩條路 -->
+  <section class="slide mid" data-page="35">
+    <div class="body">
+      <div class="big sm">會組裝的自己組<br>不組裝的用<em>套裝</em></div>
+      <div class="paths" style="margin-top:32px">
+        <div class="p">
+          <div class="h">自由組裝</div>
+          <div class="k">關鍵字：Codex、Claude Code
+            <span>三層自己配，彈性最大</span></div>
+        </div>
+        <div class="p">
+          <div class="h">套裝</div>
+          <div class="k">市面上各式單一功能 AI 軟體
+            <span>三層都幫你包好了</span></div>
+        </div>
+      </div>
+      <div class="sub" style="margin-top:24px">重點不是用哪套工具，是<b>你腦子裡有沒有那三個問題</b></div>
+    </div>
+  </section>
+
+  <!-- P36 收束 ⭐ -->
+  <section class="slide poster rev dark" data-page="36">
+    <div class="poster-wrap">
+      <img src="assets/multiverse-me.png" alt="多重宇宙裡的每一個我">
+      <div class="poster-tx">
+        <div class="l">多個宇宙<br><em>一個你</em></div>
+        <div class="l2">分身是 AI 變的<br><em>心法是你掌握的</em></div>
+        <div class="s">你的每個場景，就是你的下個 AI 宇宙。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P37 謝幕 -->
+  <section class="slide mid" data-page="37">
+    <div class="body">
+      <div class="thanks">謝謝<em>大家</em></div>
+      <div class="qr-row">
+        <img src="assets/qr-slides.png" alt="投影片網址 QR code">
+        <div class="t">
+          <b>投影片在這裡，歡迎拿去</b>
+          <span>alfredctkpro.github.io/rotary-0820</span>
+        </div>
+      </div>
+      <div class="sub" style="margin-top:24px">康貓 PP　Alfred Kang　·　台北市新世代扶輪社<br>
+        <span style="font-size:19px">Rotary — Create Lasting Impact</span></div>
+    </div>
+  </section>
+
+</div>
+
+<!-- DEMO 影片滿版播放層 -->
+<div id="vplayer">
+  <button class="vclose" onclick="closeVideo()">✕ 關閉</button>
+  <video playsinline muted preload="none"></video>
+</div>
+
+<!-- 黑屏（簡報筆 B／. 鍵） -->
+<div id="blackout"></div>
+
+<div class="navbar" id="navbar">
+  <button class="nav-arrow" id="prevBtn" aria-label="上一頁">‹</button>
+  <span class="nav-count"><b id="curNo">1</b> / <span id="totNo">12</span></span>
+  <button class="nav-arrow" id="nextBtn" aria-label="下一頁">›</button>
+</div>
+<div class="progress" id="progress"></div>
+<div id="help">簡報筆／← → 翻頁　·　影片頁按下一頁即播放　·　F 全螢幕　·　B 黑屏</div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const total=slides.length;
+  const stage=document.getElementById('stage');
+  const progress=document.getElementById('progress');
+  const curNo=document.getElementById('curNo');
+  const totNo=document.getElementById('totNo');
+  const prevBtn=document.getElementById('prevBtn');
+  const nextBtn=document.getElementById('nextBtn');
+  const blackout=document.getElementById('blackout');
+  totNo.textContent=total;
+
+  let cur=0, step=0;
+
+  // 簡報筆送出的鍵：多數為 PageDown／PageUp，部分為方向鍵
+  const NEXT_KEYS=['ArrowRight','ArrowDown','PageDown',' '];
+  const PREV_KEYS=['ArrowLeft','ArrowUp','PageUp'];
+
+  /* ── 頁內分段：影片算 1 段，其餘 .step 各算 1 段 ── */
+  const hasVideo=s=>s.dataset.video?1:0;
+  const stepsOf=s=>hasVideo(s)+s.querySelectorAll('.step').length;
+
+  function applySteps(s,k){
+    const off=hasVideo(s);
+    [...s.querySelectorAll('.step')].forEach((el,i)=>el.classList.toggle('on',i<k-off));
+  }
+
+  function show(i,atEnd){
+    cur=Math.max(0,Math.min(total-1,i));
+    const s=slides[cur];
+    step=atEnd?stepsOf(s):0;
+    slides.forEach((x,k)=>x.classList.toggle('active',k===cur));
+    applySteps(s,step);
+    curNo.textContent=cur+1;
+    progress.style.width=(cur/(total-1))*100+'%';
+    document.body.classList.toggle("on-hero",s.classList.contains("dark"));
+    history.replaceState(null,'','#'+(cur+1));
+    document.body.focus();               // 焦點保險：確保簡報筆按鍵收得到
+  }
+
+  function doStep(s,i){
+    if(hasVideo(s)&&i===0){
+      playDemos([s.dataset.video],parseFloat(s.dataset.rate||'1'));
+      return;
+    }
+    applySteps(s,i+1);
+  }
+
+  function next(){
+    const s=slides[cur];
+    if(step<stepsOf(s)){doStep(s,step);step++;return;}   // 先跑完頁內分段
+    if(cur<total-1) show(cur+1,false);
+  }
+  function prev(){
+    const s=slides[cur];
+    if(step>0){step--;applySteps(s,step);return;}        // 倒退頁內分段
+    if(cur>0) show(cur-1,true);                          // 回上一頁時分段全開
+  }
+
+  // 讓「播放實錄」按鈕與簡報筆共用同一條路徑
+  window.playSlideVideo=function(btn){
+    const s=btn.closest('.slide');
+    if(step===0){step=1;}
+    playDemos([s.dataset.video],parseFloat(s.dataset.rate||'1'));
+  };
+
+  function fit(){
+    const sc=Math.min(window.innerWidth/1280,window.innerHeight/720);
+    stage.style.transform=`translate(-50%,-50%) scale(${sc})`;
+  }
+  window.addEventListener('resize',fit);
+
+  /* ── DEMO 影片：可指定播放倍速（demo1 為 1.25，其餘 1.0）── */
+  const vp=document.getElementById('vplayer'), vEl=vp.querySelector('video');
+  let vQ=[], vI=0, vRate=1;
+  window.playDemos=function(list,rate){
+    vQ=list;vI=0;vRate=rate||1;
+    vp.classList.add('on');vEl.muted=true;vLoad();
+  };
+  function vLoad(){vEl.src=vQ[vI];vEl.currentTime=0;vEl.playbackRate=vRate;vEl.play().catch(()=>{});}
+  window.closeVideo=function(){
+    vp.classList.remove('on');vEl.pause();vEl.removeAttribute('src');vEl.load();
+    document.body.focus();
+  };
+  vEl.addEventListener('loadeddata',()=>{vEl.playbackRate=vRate;});
+  // 播完＝關閉並留在原頁（四個影片頁播完後都還有話術要講，絕不自動翻頁）
+  vEl.addEventListener('ended',()=>{(vI<vQ.length-1)?(vI++,vLoad()):closeVideo();});
+  vp.addEventListener('click',e=>{if(e.target===vp)closeVideo();});
+
+  document.addEventListener('keydown',e=>{
+    // 部分簡報筆「開始放映」鍵送 F5，瀏覽器會重載並跳回第 1 頁
+    if(e.key==='F5'){e.preventDefault();return;}
+
+    if(blackout.classList.contains('on')){
+      blackout.classList.remove('on');e.preventDefault();return;
+    }
+
+    if(vp.classList.contains('on')){
+      if(e.key===' '){vEl.paused?vEl.play():vEl.pause();}
+      // 簡報筆沒有 Esc 鍵——翻頁鍵必須能跳出影片，否則現場卡死
+      else if(e.key==='Escape'||NEXT_KEYS.includes(e.key)||PREV_KEYS.includes(e.key)){closeVideo();}
+      e.preventDefault();return;
+    }
+
+    if(NEXT_KEYS.includes(e.key)){next();e.preventDefault();return;}
+    if(PREV_KEYS.includes(e.key)){prev();e.preventDefault();return;}
+
+    switch(e.key){
+      case 'Home': show(0,false);e.preventDefault();break;
+      case 'End': show(total-1,false);e.preventDefault();break;
+      case 'f': case 'F':
+        if(!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+        else document.exitFullscreen?.();
+        e.preventDefault();break;
+      case 'b': case 'B': case '.':
+        blackout.classList.add('on');e.preventDefault();break;
+    }
+  });
+
+  prevBtn.addEventListener('click',e=>{e.stopPropagation();prev();});
+  nextBtn.addEventListener('click',e=>{e.stopPropagation();next();});
+  blackout.addEventListener('click',()=>blackout.classList.remove('on'));
+
+  // 點畫面左右各 1/6 才翻頁；中間 2/3 留給選字強調，不誤翻頁
+  document.addEventListener('click',e=>{
+    if(vp.classList.contains('on'))return;
+    if(blackout.classList.contains('on'))return;
+    if(e.target.closest('#navbar')||e.target.closest('a')||e.target.closest('button'))return;
+    const w=window.innerWidth;
+    if(e.clientX<w/6) prev();
+    else if(e.clientX>w*5/6) next();
+  });
+
+  let tx=0,ty=0;
+  document.addEventListener('touchstart',e=>{
+    tx=e.changedTouches[0].clientX;ty=e.changedTouches[0].clientY;},{passive:true});
+  document.addEventListener('touchend',e=>{
+    if(vp.classList.contains('on'))return;
+    const dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+    if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){dx<0?next():prev();}
+  },{passive:true});
+
+  function clampHash(){const h=parseInt(location.hash.replace('#',''),10);return(h>=1&&h<=total)?h-1:0;}
+  // 直接改網址 #N 也能跳頁（排練時方便，不必從頭翻）
+  window.addEventListener('hashchange',()=>{const i=clampHash();if(i!==cur)show(i,false);});
+  fit(); show(clampHash(),false);
+  setTimeout(()=>{document.getElementById('help').style.opacity='0';},6000);
+</script>
+</body>
+</html>
