@@ -30,10 +30,13 @@
 | `demos/demo2/demo2.mp4` | ✅ 已進 repo | P26（trip 實跑） |
 | `demos/demo3/demo3-1-explain-investiment-base.mp4` | ✅ 已進 repo | P30（庫導覽） |
 | `demos/demo3/demo3-2-call-a-roundtable-meeting.mp4` | ✅ 已進 repo | P32（圓桌實況） |
-| `demos/demo1/demo1.mp4` | ⚠️ **暫扣**（.gitignore 有一行暫擋） | P9 |
+| `demos/demo1/demo1.mp4` | ⚠️ **本地限定**（gitignore 擋住，永不進 repo） | P9 現場版 |
+| `demos/demo1/demo1-clean.mp4` | ✅ 已進 repo（去識別化公開版，2:43） | P9 網路 fallback |
 
-- ⚠️ **demo1 暫扣原因**：影片中 Google Calendar 捲動段含**多筆真實人名＋領藥行程**（高國維領藥、陳鋮忠領藥等），公開 repo 不可上。**待 Alfred 重剪**（用乾淨的 demo 專用日曆重錄該段、或裁掉）後，移除 .gitignore 那行暫擋、再 add+push。
-- **P9 投影片照常做**：按鈕掛 `demos/demo1/demo1.mp4` 路徑，檔案補上後自動生效。
+- **demo1 雙版本策略（8/13 定案）**：原版含真實日曆與第三方人名（不可公開），但現場播放需要它的清晰度 →
+  - **現場**：從本地資料夾開投影片，載入的是本地原版（gitignore 不影響本地檔案存在）
+  - **公開 Pages**：原版 404 → 自動 fallback 播 `demo1-clean.mp4`（去識別化版：砍兩週行程清單與真實 GCal 段、插入只留「看牙醫」的清理定格、遮「康總業」與機器人 ID、去音軌）
+- **P9 按鈕必須做 fallback**：`<video>` 的 src 先掛 `demos/demo1/demo1.mp4`，`onerror`（或載入失敗檢測）時改掛 `demos/demo1/demo1-clean.mp4` 重播。playDemos() 的 `vLoad()` 加幾行 error handler 即可。**其餘三支影片單一版本、無需 fallback**。
 - ⚠️ **P9 的實際素材與大綱描述不同**：大綱寫兩支影片（輸入端＋陪伴端），實際 Alfred 錄成**一支合一**（約 4.5 分鐘，含輸入→確認→GCal→晨間提醒→拜拜提醒）。按鈕做**一顆**即可；P9 話術的 cue 順序對應影片內段落。
 - 影片方針（8/13 定案）：**H.264 mp4 成品進 git、GitHub Pages 網址播放**；原始 .mov 不進。新影片如需轉檔：`ffmpeg -i in.mov -c:v libx264 -preset medium -crf 23 -vf "scale=720:-2,fps=30" -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart out.mp4`。
 

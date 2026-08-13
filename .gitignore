@@ -53,5 +53,6 @@ Thumbs.db
 # ── Keynote 暫存
 *.key.sb-*
 
-# ── 暫時擋住（GCal 段含真實人名＋領藥行程，待重剪後移除此行）
+# ── demo1 原版＝本地限定（含真實日曆與人名，絕不進公開 repo）
+# 現場從本地資料夾播原版；公開網址自動 fallback 到 demo1-clean.mp4（去識別化版）
 demos/demo1/demo1.mp4
