@@ -1,14 +1,12 @@
 # ⚠️ 這是 PUBLIC repo — 進 git 的東西全世界看得到，且 history 刪不掉
 # 下面每一條都是「不小心 commit 就會出事」的東西
 
-# ── 影片（8/10 方針：影片不進 git，本地檔主播放＋YouTube 未公開備援）
+# ── 影片方針（8/13 更新：成品 mp4 進 git、由 GitHub Pages 網址播放）
+# 只進轉好的 H.264 .mp4 成品；原始檔（.mov 大檔、未剪素材）仍不進
 *.mov
-*.mp4
 *.m4v
 *.avi
 *.mkv
-demos/**/*.mov
-demos/**/*.mp4
 
 # ── 敏感素材：去識別化「之前」的原始檔一律不進
 # 命名慣例：檔名含 -raw / -原始 / -未遮 的都擋掉
@@ -54,3 +52,6 @@ Thumbs.db
 
 # ── Keynote 暫存
 *.key.sb-*
+
+# ── 暫時擋住（GCal 段含真實人名＋領藥行程，待重剪後移除此行）
+demos/demo1/demo1.mp4

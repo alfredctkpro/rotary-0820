@@ -1,7 +1,7 @@
 # Demo 1 拍攝腳本 · Hermes × LINE 服務爸媽
 
 > 對應投影片 **P9**。兩支影片：`demo1-line-input.mp4`（輸入端，本檔主體）＋ `demo2-line-daily.mp4`（陪伴端，見文末）。
-> 成品皆 60-120 秒、無旁白（現場講）、**不進 git**（`demos/` 已被 .gitignore 擋住）。
+> 成品皆 60-120 秒、無旁白（現場講）、mp4 成品進 git（Pages 網址播放；原始 .mov 不進）。
 
 ---
 
@@ -78,7 +78,7 @@
 
 ## ✂️ 剪輯與存檔
 
-- [ ] 成品：`demo1-line-input.mp4`、`demo2-line-daily.mp4` → 放 `~/rotary-0820/demos/`（.gitignore 已擋，不進 git）
+- [ ] 成品：`demo1-line-input.mp4`、`demo2-line-daily.mp4` → 放 `~/rotary-0820/demos/`（mp4 成品進 git，Pages 播放）
 - [ ] 備援：上傳 YouTube **未公開**，連結記在本檔（講完前別轉公開）
 - [ ] 遮蔽檢查：LINE **頭像與顯示名稱**（暱稱若是本名→剪輯時遮）、GCal 畫面只有專用日曆
 - [ ] 投影片播放測試：`playDemos(['demo1-line-input.mp4','demo2-line-daily.mp4'])` 連播（yilan-bids 骨架的播放層）

@@ -1,7 +1,7 @@
 # Demo 2 拍攝腳本 · Family Trip（截圖＋skill 實跑）
 
 > 對應投影片 **P25**（靜態＝懂家人）＋ **P26**（影片＝一句話→三方案）。
-> 成品影片 `demo2b-trip-live.mp4`（60-90 秒）不進 git；靜態部分見下——**預設不用手動截圖**。
+> 成品影片 `demo2b-trip-live.mp4`（60-90 秒）mp4 成品進 git（Pages 網址播放）；靜態部分見下——**預設不用手動截圖**。
 
 ---
 
@@ -64,7 +64,7 @@
 
 ### 收尾
 
-- [ ] 成品存 `~/rotary-0820/demos/demo2b-trip-live.mp4`（不進 git）＋ YT 未公開備援
+- [ ] 成品存 `~/rotary-0820/demos/demo2b-trip-live.mp4`＋ YT 未公開備援
 - [ ] 跑完產出的 `2_family/trips/2026-08-22-週六.md` 是**真實工作成果**——回 thinkr `/save-progress` 存檔
 - [ ] 順手看一下 8/22 那三個方案——週四（8/20 講完隔天）你本來就要拍板這週去哪
 

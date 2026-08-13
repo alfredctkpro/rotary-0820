@@ -43,7 +43,7 @@ assets/    圖表素材（三層架構圖等）
 
 ### ⚠️ 影片不在這裡
 
-Demo 錄影檔案較大，不進 git。現場播放用本地檔，備援用 YouTube 未公開連結。
+Demo 影片（H.264 .mp4 成品）隨 repo 提供，投影片經 GitHub Pages 網址直接播放；原始 .mov 大檔不進 git。
 
 ---
 
