@@ -751,7 +751,8 @@
     <div class="sect">
       <div class="no">宇宙三</div>
       <div class="tx">
-        <div class="t">我的錢</div>
+        <!-- 單字標題：82px 在單字下會顯得單薄，放大到與「宇宙三」平衡 -->
+        <div class="t" style="font-size:158px;line-height:1.02;letter-spacing:0">錢</div>
         <div class="d">今天最重要的一段</div>
       </div>
     </div>
@@ -761,13 +762,14 @@
   <section class="slide mid" data-page="30">
     <div class="body">
       <div class="big sm">每本書都有道理<br><em>但沒有一本認識我</em></div>
-      <div class="list" style="margin-top:32px;width:900px">
-        <div class="it step" style="font-size:29px">
-          <div class="ic">1</div>書上的建議，跟<b>我手上實際持有的東西</b>有什麼關係？</div>
-        <div class="it step" style="font-size:29px">
-          <div class="ic">2</div><b>我的個性</b>有沒有被放進去？我撐不撐得住波動？</div>
-        <div class="it step" style="font-size:29px">
-          <div class="ic">3</div>我是一個<b>什麼樣的人</b>？</div>
+      <div class="list" style="margin-top:36px;width:940px;gap:26px">
+        <!-- ⚠️ .it 是 flex：文字要包成單一 <span>，否則每個 <b> 會各自變成 flex item 被拆散 -->
+        <div class="it step" style="font-size:33px">
+          <div class="ic">1</div>
+          <span>書上的建議，跟<b>我手上實際持有的東西</b>有什麼關係？</span></div>
+        <div class="it step" style="font-size:33px">
+          <div class="ic">2</div>
+          <span><b>我的個性</b>放進去了嗎？我是<b>什麼樣的人</b>、撐不撐得住波動？</span></div>
       </div>
     </div>
   </section>
