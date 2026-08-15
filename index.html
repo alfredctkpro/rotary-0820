@@ -34,6 +34,23 @@
   .big.xl{font-size:104px;line-height:1.06;}
   .big.sm{font-size:60px;line-height:1.2;}
   .big em{font-style:normal;color:var(--blue);}
+  /* P20 三層合一：滿版機器人插圖＋三個標籤逐一浮現（圖內無字，標籤是 HTML 疊上去的） */
+  .slide.robot{padding:0;}
+  /* 圖是 4:3、舞台 16:9——用 cover 裁掉上下留白做成滿版（機器人與桌腳都在安全區內） */
+  .slide.robot>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .robot .tag{position:absolute;opacity:0;transform:translateY(10px);
+              transition:opacity .5s ease,transform .5s ease;}
+  .robot .tag.on{opacity:1;transform:none;}
+  .robot .tag b{display:block;font-size:40px;font-weight:900;color:var(--blue);letter-spacing:-1px;}
+  .robot .tag b i{font-style:normal;font-size:.45em;font-weight:700;color:var(--muted);
+                  letter-spacing:0;margin-left:5px;}
+  .robot .tag span{display:block;font-size:23px;font-weight:700;color:var(--ink);margin-top:2px;}
+  .robot .t-prompt{left:74px;top:112px;}
+  .robot .t-harness{right:74px;top:112px;text-align:right;}
+  .robot .t-context{left:50%;bottom:40px;text-align:center;
+                    transform:translate(-50%,10px);}
+  .robot .t-context.on{transform:translate(-50%,0);}
+
   /* 三層名詞的中文對照（8/15 Alfred：加中文比較親切）——小一號灰字，不搶大字的力道 */
   .zh{font-size:.42em;font-weight:700;color:var(--muted);letter-spacing:0;
       margin-left:4px;vertical-align:.16em;white-space:nowrap;}
@@ -473,7 +490,7 @@
     </div>
   </section>
 
-  <!-- ═══════════ 心法：三層架構 P12-P23 ═══════════ -->
+  <!-- ═══════════ 心法：三層架構 P12-P24 ═══════════ -->
 
   <!-- P12 轉場 -->
   <section class="slide mid" data-page="12">
@@ -579,12 +596,27 @@
     </div>
   </section>
 
+  <!-- P21 三層合一：機器人具象圖（滿版插圖，三個標籤逐一浮現；圖內無字是鐵律） -->
+  <section class="slide robot" data-page="20">
+    <img src="assets/three-layers-robot.png"
+         alt="機器人：耳朵與嘴巴接收指令、桌上攤滿文件、雙手拿著各種工具">
+    <div class="tag t-prompt step">
+      <b>Prompt<i>（提示詞）</i></b><span>耳朵聽、嘴巴回</span>
+    </div>
+    <div class="tag t-context step">
+      <b>Context<i>（情境）</i></b><span>桌上這些文件，就是它對你的了解</span>
+    </div>
+    <div class="tag t-harness step">
+      <b>Harness<i>（駕馭）</i></b><span>手腳，跟手上的工具</span>
+    </div>
+  </section>
+
   <!-- ── 8/15 改序：兩個安全故事從 Prompt 之後（原 P15／P16）移到三層講完之後。
        理由＝這兩個 agent 三層都有，是「沒用好／發過頭」的案例，不是「Prompt 沒下好」。
        信箱＝第二層沒給夠；插隊＝第三層發過頭（門禁卡），一頁扛一層。 ── -->
 
-  <!-- P20 安全故事一：它把信箱清空了（＝Context 沒給夠） -->
-  <section class="slide mid" data-page="20">
+  <!-- P21 安全故事一：它把信箱清空了（＝Context 沒給夠） -->
+  <section class="slide mid" data-page="21">
     <div class="body">
       <div class="kicker">安全故事 ①</div>
       <div class="say" style="margin-top:30px">「幫我整理 email」</div>
@@ -595,8 +627,8 @@
     </div>
   </section>
 
-  <!-- P21 安全故事二：它做到了——用你剛發出去的那張門禁卡（＝Harness 發過頭） -->
-  <section class="slide mid" data-page="21">
+  <!-- P22 安全故事二：它做到了——用你剛發出去的那張門禁卡（＝Harness 發過頭） -->
+  <section class="slide mid" data-page="22">
     <div class="body">
       <div class="kicker">安全故事 ②</div>
       <div class="big sm" style="margin-top:20px">排第四的預約<br>變成了<em>第一</em></div>
@@ -614,8 +646,8 @@
     </div>
   </section>
 
-  <!-- P22 孫悟空 ⭐（回收 P3 伏筆） -->
-  <section class="slide mid" data-page="22">
+  <!-- P23 孫悟空 ⭐（回收 P4 伏筆） -->
+  <section class="slide mid" data-page="23">
     <div class="body">
       <div class="illus" style="margin-bottom:22px">
         <img src="assets/monkey-clones.png" alt="猴王拔毫毛吹出一群各拿工具的分身"
@@ -625,18 +657,18 @@
     </div>
   </section>
 
-  <!-- P23 互動轉折 ⭐ -->
-  <section class="slide mid" data-page="23">
+  <!-- P24 互動轉折 ⭐ -->
+  <section class="slide mid" data-page="24">
     <div class="body">
       <div class="year">2024？</div>
       <div class="big" style="margin-top:18px">你的 AI 用法<br>還停在<em>哪一年</em>？</div>
     </div>
   </section>
 
-  <!-- ═══════════ 宇宙二：全家的週末 P24-P27 ═══════════ -->
+  <!-- ═══════════ 宇宙二：全家的週末 P25-P28 ═══════════ -->
 
-  <!-- P24 段落題 -->
-  <section class="slide" data-page="24">
+  <!-- P25 段落題 -->
+  <section class="slide" data-page="25">
     <div class="sect">
       <div class="no">宇宙二</div>
       <div class="tx">
@@ -646,8 +678,8 @@
     </div>
   </section>
 
-  <!-- P25 每週五的頭痛 -->
-  <section class="slide mid" data-page="25">
+  <!-- P26 每週五的頭痛 -->
+  <section class="slide mid" data-page="26">
     <div class="body">
       <div class="big sm">每週五都要重新想一次<br><em>明天去哪？</em></div>
       <div class="cons" style="margin-top:34px">
@@ -663,8 +695,8 @@
     </div>
   </section>
 
-  <!-- P26 它知道我家（文件卡片＝原文引用，非截圖；家人名字已遮） -->
-  <section class="slide mid" data-page="26">
+  <!-- P27 它知道我家（文件卡片＝原文引用，非截圖；家人名字已遮） -->
+  <section class="slide mid" data-page="27">
     <div class="body">
       <div class="big sm">它知道我小孩<br><em>幾點要上課</em></div>
       <div class="sub" style="margin-top:16px">也知道我媽怕熱、我爸要面子</div>
@@ -691,8 +723,8 @@
     </div>
   </section>
 
-  <!-- P27 【影片】一句話，三個方案 ⭐（頁內三段：大字 → 影片 → 每週交卷的收據） -->
-  <section class="slide mid" data-page="27" data-video="demos/demo2/demo2.mp4">
+  <!-- P28 【影片】一句話，三個方案 ⭐（頁內三段：大字 → 影片 → 每週交卷的收據） -->
+  <section class="slide mid" data-page="28" data-video="demos/demo2/demo2.mp4">
     <div class="body">
       <div class="big sm">每週四<br>交<em>三個方案</em>給我挑</div>
       <div class="sub" style="margin-top:14px">我只負責拍板</div>
@@ -712,10 +744,10 @@
     </div>
   </section>
 
-  <!-- ═══════════ 宇宙三：我的錢 P28-P33 ═══════════ -->
+  <!-- ═══════════ 宇宙三：我的錢 P29-P34 ═══════════ -->
 
-  <!-- P28 段落題 -->
-  <section class="slide" data-page="28">
+  <!-- P29 段落題 -->
+  <section class="slide" data-page="29">
     <div class="sect">
       <div class="no">宇宙三</div>
       <div class="tx">
@@ -725,8 +757,8 @@
     </div>
   </section>
 
-  <!-- P29 困擾（三個問句逐行浮現） -->
-  <section class="slide mid" data-page="29">
+  <!-- P30 困擾（三個問句逐行浮現） -->
+  <section class="slide mid" data-page="30">
     <div class="body">
       <div class="big sm">每本書都有道理<br><em>但沒有一本認識我</em></div>
       <div class="list" style="margin-top:32px;width:900px">
@@ -740,8 +772,8 @@
     </div>
   </section>
 
-  <!-- P30 鉤子 ⭐⭐（全場最重的一頁） -->
-  <section class="slide mid" data-page="30">
+  <!-- P31 鉤子 ⭐⭐（全場最重的一頁） -->
+  <section class="slide mid" data-page="31">
     <div class="body">
       <div class="kicker">我以為的安全邊際</div>
       <div class="hook" style="margin-top:26px">
@@ -756,8 +788,8 @@
     </div>
   </section>
 
-  <!-- P31 【影片A】這個庫裡，裝的是「我」 ⭐ -->
-  <section class="slide mid" data-page="31"
+  <!-- P32 【影片A】這個庫裡，裝的是「我」 ⭐ -->
+  <section class="slide mid" data-page="32"
            data-video="demos/demo3/demo3-1-explain-investiment-base.mp4">
     <div class="body">
       <div class="big sm">這個庫裡<br>裝的是<em>「我」</em></div>
@@ -767,8 +799,8 @@
     </div>
   </section>
 
-  <!-- P32 我為我的錢，請了一桌分身 ⭐（回收 P21 孫悟空） -->
-  <section class="slide mid" data-page="32">
+  <!-- P33 我為我的錢，請了一桌分身 ⭐（回收 P21 孫悟空） -->
+  <section class="slide mid" data-page="33">
     <div class="body">
       <div class="big sm">我為我的錢<br>請了<em>一桌分身</em></div>
       <div class="sub" style="margin-top:12px">每一席一種投資哲學——而且立場互相打架</div>
@@ -786,8 +818,8 @@
     </div>
   </section>
 
-  <!-- P33 【影片B】圓桌實況 ⭐（大字＝那行指令，與影片一字不差） -->
-  <section class="slide mid" data-page="33"
+  <!-- P34 【影片B】圓桌實況 ⭐（大字＝那行指令，與影片一字不差） -->
+  <section class="slide mid" data-page="34"
            data-video="demos/demo3/demo3-2-call-a-roundtable-meeting.mp4">
     <div class="body">
       <div class="kicker">召開一場會，我只需要這一句</div>
@@ -796,10 +828,10 @@
     </div>
   </section>
 
-  <!-- ═══════════ 收束 P34-P37 ═══════════ -->
+  <!-- ═══════════ 收束 P35-P38 ═══════════ -->
 
-  <!-- P34 一套心法 ⭐（三層圖第三次出現，每層掛問句） -->
-  <section class="slide mid" data-page="34">
+  <!-- P35 一套心法 ⭐（三層圖第三次出現，每層掛問句） -->
+  <section class="slide mid" data-page="35">
     <div class="body">
       <div class="kicker">三個宇宙，做的是同一件事</div>
       <div class="layers" style="margin-top:30px">
@@ -814,8 +846,8 @@
     </div>
   </section>
 
-  <!-- P35 兩條路 -->
-  <section class="slide mid" data-page="35">
+  <!-- P36 兩條路 -->
+  <section class="slide mid" data-page="36">
     <div class="body">
       <div class="big sm">會組裝的自己組<br>不組裝的用<em>套裝</em></div>
       <div class="paths" style="margin-top:32px">
@@ -834,8 +866,8 @@
     </div>
   </section>
 
-  <!-- P36 收束 ⭐ -->
-  <section class="slide poster rev dark" data-page="36">
+  <!-- P37 收束 ⭐ -->
+  <section class="slide poster rev dark" data-page="37">
     <div class="poster-wrap">
       <img src="assets/multiverse-me.png" alt="多重宇宙裡的每一個我">
       <div class="poster-tx">
@@ -846,8 +878,8 @@
     </div>
   </section>
 
-  <!-- P37 謝幕 -->
-  <section class="slide mid" data-page="37">
+  <!-- P38 謝幕 -->
+  <section class="slide mid" data-page="38">
     <div class="body">
       <div class="thanks">謝謝<em>大家</em></div>
       <div class="qr-row">

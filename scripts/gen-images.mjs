@@ -100,6 +100,26 @@ const IMAGES = {
       `Convey "whichever universe you are in, you can handle it". ${POSTER}`,
   },
 
+  // P20 · 三層架構具象化：一隻機器人＝耳朵嘴巴（Prompt）／桌上文件（Context）／手腳工具（Harness）
+  // ⚠️ 圖內不可有字——三個標籤由頁面用 HTML 疊上去，才能配合簡報筆逐一浮現。
+  //    構圖要求「頭在上、桌在中、工具在兩側」並留白，就是為了讓標籤有地方放。
+  'three-layers-robot': {
+    prompt:
+      `A single friendly robot behind a large desk, drawn as a clear three-part diagram ` +
+      `so that captions can be attached to each part later. ` +
+      `TOP — its HEAD sits in the upper centre, large and unmistakable: prominent ears on both ` +
+      `sides of the head and an open friendly mouth, as if it is listening and about to answer. ` +
+      `MIDDLE — the DESK in front of it is covered with spread-out papers, documents, folders ` +
+      `and a stack of files, filling the width of the desk. ` +
+      `SIDES — two articulated mechanical arms reach outwards left and right, each holding a tool, ` +
+      `with a few more tools floating near the hands: a wrench, a magnifying glass, a paintbrush, ` +
+      `a small laptop, a calendar page, a shopping basket. ` +
+      `Keep GENEROUS EMPTY SPACE above the head, and to the outer left and outer right of the ` +
+      `two arms, so captions can be placed there later. Keep the robot centred and symmetrical. ` +
+      `Exactly ONE robot, no humans, no other creatures. ` +
+      `Warm, wry and competent — not scary, not childishly cute. ${STYLE}`,
+  },
+
   // P17 · Context 的限制：桌面有限
   'desk-overflow': {
     prompt:
