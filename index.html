@@ -903,7 +903,7 @@
 <!-- DEMO 影片滿版播放層 -->
 <div id="vplayer">
   <button class="vclose" onclick="closeVideo()">✕ 關閉</button>
-  <video playsinline muted preload="none"></video>
+  <video playsinline preload="none"></video>
 </div>
 
 <!-- 黑屏（簡報筆 B／. 鍵） -->
@@ -994,9 +994,15 @@
   let vQ=[], vI=0, vRate=1;
   window.playDemos=function(list,rate){
     vQ=list;vI=0;vRate=rate||1;
-    vp.classList.add('on');vEl.muted=true;vLoad();
+    // 有聲播放：播放一律由使用者手勢觸發（按鈕或簡報筆按鍵），不受自動播放政策限制。
+    // 骨架原本寫死 muted=true，會讓現場四支影片全程無聲。
+    vp.classList.add('on');vEl.muted=false;vEl.volume=1;vLoad();
   };
-  function vLoad(){vEl.src=vQ[vI];vEl.currentTime=0;vEl.playbackRate=vRate;vEl.play().catch(()=>{});}
+  function vLoad(){
+    vEl.src=vQ[vI];vEl.currentTime=0;vEl.playbackRate=vRate;
+    // 萬一仍被瀏覽器擋下（換裝置／換瀏覽器），降級為靜音重播，至少畫面不會卡住
+    vEl.play().catch(()=>{vEl.muted=true;vEl.play().catch(()=>{});});
+  }
   window.closeVideo=function(){
     vp.classList.remove('on');vEl.pause();vEl.removeAttribute('src');vEl.load();
     document.body.focus();
