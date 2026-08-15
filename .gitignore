@@ -27,6 +27,10 @@
 assets/alfred.jpg
 assets/alfred-face.*
 
+# 電影海報原檔＝有版權的宣傳素材，只當生圖的構圖參考，不進 public repo。
+# 產出的 multiverse-me.png 是致敬構圖＋Alfred 本人的臉，才是進 repo 的成品。
+assets/movie-poster.jpg
+
 # ── 投資相關（Demo 3 素材含真實債券部位金額，絕不進 public）
 **/investiment-base/
 **/對帳單*

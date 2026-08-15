@@ -5,15 +5,30 @@
 //   node scripts/gen-images.mjs --force        # 強制重產
 //   node scripts/gen-images.mjs desk-overflow  # 只產指定的圖
 //
-// 依賴與 API Key 都重用既有專案，本 repo 不裝 node_modules、不放金鑰：
-//   模組  → ~/bni-ai-news/ctkpro-intro/node_modules
-//   金鑰  → ~/ctkpro_blog_posts/.env 的 GEMINI_API_KEY
+// 依賴與 API Key 都重用既有專案，本 repo 不裝 node_modules、不放金鑰。
+// ⚠️ 這些外部路徑會消失（8/15 壞過一次：原指的 ~/bni-ai-news/ctkpro-intro/node_modules
+//    與 ~/ctkpro_blog_posts/.env 都已不在）。故改成候選清單，取第一個存在的。
 
 import fs from 'fs/promises';
+import { existsSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const NM = '/Users/alfred/bni-ai-news/ctkpro-intro/node_modules';
+const NM_CANDIDATES = [
+  '/Users/alfred/ctkpro_blog_posts/node_modules',
+  '/Users/alfred/bni-ai-news/ctkpro-intro/node_modules',
+];
+const ENV_CANDIDATES = [
+  '/Users/alfred/bid-slides/.env',
+  '/Users/alfred/hermes-slides/.env',
+  '/Users/alfred/ctkpro_blog_posts/.env',
+];
+
+const NM = NM_CANDIDATES.find((p) => existsSync(path.join(p, 'sharp')));
+if (!NM) {
+  console.error(`❌ 找不到可用的 node_modules，試過：\n   ${NM_CANDIDATES.join('\n   ')}`);
+  process.exit(1);
+}
 const { GoogleGenerativeAI } = await import(`${NM}/@google/generative-ai/dist/index.mjs`);
 const sharp = (await import(`${NM}/sharp/lib/index.js`)).default;
 const dotenv = (await import(`${NM}/dotenv/lib/main.js`)).default;
@@ -21,12 +36,14 @@ const dotenv = (await import(`${NM}/dotenv/lib/main.js`)).default;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ASSETS = path.join(path.resolve(__dirname, '..'), 'assets');
 
-dotenv.config({ path: '/Users/alfred/ctkpro_blog_posts/.env' });
+const ENV_FILE = ENV_CANDIDATES.find((p) => existsSync(p));
+if (ENV_FILE) dotenv.config({ path: ENV_FILE });
 const API_KEY = process.env.GEMINI_API_KEY;
 if (!API_KEY) {
-  console.error('❌ 找不到 GEMINI_API_KEY（預期在 ~/ctkpro_blog_posts/.env）');
+  console.error(`❌ 找不到 GEMINI_API_KEY，試過：\n   ${ENV_CANDIDATES.join('\n   ')}`);
   process.exit(1);
 }
+console.log(`🔑 金鑰：${ENV_FILE}\n📦 模組：${NM}`);
 const MODEL = process.env.GEMINI_IMAGE_MODEL || 'gemini-3-pro-image-preview';
 
 // 全庫統一風格：藍墨手繪＋暖紙，與白底高橋流投影片同調
@@ -43,39 +60,44 @@ const STYLE = [
 ].join(' ');
 
 // 電影海報致敬頁專用風格（不走藍墨手繪，要的是視覺衝擊）
-// 深藍主調＝對齊主辦海報的 #011C47 系，讓它跟投影片同一家族
-const CINEMATIC = [
-  'Vibrant cinematic movie-poster illustration in a TALL VERTICAL PORTRAIT format (2:3 poster ratio).',
-  'Dominant colour scheme: deep midnight navy blue (#0C1B44) background and atmosphere,',
-  'with warm gold and teal accent highlights only. Do NOT use a rainbow of clashing colours.',
-  'Swirling multiverse energy radiating outward from the centre, dramatic rim lighting, painterly and bold.',
+// 8/15 改版：改走原片海報的血紅放射調——辨識度優先（Alfred：要讓人回想起那部電影）
+// ⚠️ 只致敬「構圖語言」（紅底放射／中央前傾主角／上方疊人／漂浮雜物），
+//    不複製原海報的人物、演員肖像、片名字體或任何文字
+const POSTER = [
+  'Vibrant cinematic movie-poster illustration, TALL VERTICAL PORTRAIT format (2:3 poster ratio).',
+  'Dominant colour scheme: deep blood-red and crimson, with dark smoky maroon edges and',
+  'bright radiating energy bursting outward from the centre behind the figures.',
+  'Dramatic rim lighting on every figure; small colourful paper-confetti fragments floating in the air.',
+  'Bold, painterly, high-contrast, slightly chaotic — the kinetic energy of a martial-arts multiverse poster.',
   'CRITICAL: absolutely NO text, NO words, NO letters, NO numbers, NO signage, NO logos,',
-  'NO title treatment, NO shop signs anywhere in the image.',
+  'NO title treatment anywhere in the image.',
 ].join(' ');
 
 const IMAGES = {
-  // P2 · 多重宇宙意象（致敬構圖，但畫面中每一個人都是 Alfred 本人）
+  // P2 · 多重宇宙意象（致敬原片海報構圖，但畫面中每一張臉都是 Alfred 本人）
   'multiverse-me': {
     out: [900, 1350],          // 直式 2:3 海報比例
-    pad: '#0C1B44',            // 補邊用深藍，與 P2 底色同色
-    refs: ['/private/tmp/claude-501/-Users-alfred-rotary-0820/efa444a5-7992-4bfc-953c-93e8f1fa378d/scratchpad/eeaao.jpg', 'FACE'],
+    pad: '#1A0508',            // 補邊用暗紅黑，與海報邊緣同調
+    refs: [`${ASSETS}/movie-poster.jpg`, 'FACE'],
     prompt:
-      `Use the FIRST image as the composition reference: a confident central hero figure ` +
-      `surrounded by a swirling vortex of everyday objects, with a few smaller figures arranged above ` +
-      `and behind. Keep its TALL VERTICAL POSTER shape and its sense of chaotic energy. ` +
+      `Use the FIRST image ONLY as a COMPOSITION and COLOUR reference — the tall poster shape, ` +
+      `the blood-red radiating background, and the way figures are stacked in an overlapping cluster. ` +
+      `⛔ Do NOT copy any person, face, costume, prop or lettering from that first image. ` +
       `⚠️ ABSOLUTE CASTING RULE — read carefully: the ONLY human being allowed to appear anywhere in ` +
-      `this image is the man in the SECOND photo (rectangular black-framed glasses, short spiky greying hair, ` +
-      `friendly middle-aged Taiwanese man). He appears FIVE times as five versions of himself. ` +
+      `this image is the man in the SECOND photo (rectangular black-framed glasses, short spiky black hair, ` +
+      `warm open smile, friendly middle-aged Taiwanese man). He appears FOUR times as four versions ` +
+      `of himself, and every single face must be clearly recognisable as HIM. ` +
       `There must be NO other people whatsoever — no women, no children, no elderly people, ` +
       `no background crowds, no monsters, no creatures, no animals, no strange blobs. ` +
-      `Every single face in the image is HIS face. If in doubt, draw fewer figures, not more. ` +
-      `Do NOT reproduce any person from the first image. ` +
-      `His five versions: centre — heroic, arms open, confident; ` +
-      `then one in a business shirt, one carrying grocery bags, one with a travel backpack and sun hat, ` +
-      `one holding a tablet. ` +
-      `Floating around them: a smartphone, a paper wall calendar, an umbrella, a car key, ` +
-      `a lunch box, a shopping bag, coffee cups — all blank and unbranded. ` +
-      `Convey "whichever universe you are in, you can handle it". ${CINEMATIC}`,
+      `If in doubt, draw fewer figures, not more. ` +
+      `LAYOUT: the LARGEST version of him occupies the lower-centre, leaning forward towards the viewer ` +
+      `with one hand thrust out flat in a martial-arts ready stance — determined, heroic, eyes to camera. ` +
+      `Directly above and behind him, three smaller versions of him overlap in a tight cluster: ` +
+      `one in a crisp business shirt holding a smartphone, one in casual clothes carrying grocery bags, ` +
+      `one with a travel backpack and a sun hat. ` +
+      `Floating around the cluster: a smartphone, a paper wall calendar, a car key, a coffee cup, ` +
+      `a shopping bag — all blank and unbranded. ` +
+      `Convey "whichever universe you are in, you can handle it". ${POSTER}`,
   },
 
   // P17 · Context 的限制：桌面有限
@@ -120,7 +142,12 @@ async function loadFace() {
   const poster = path.join(ASSETS, 'talk-ads.jpg');
   await fs.access(poster);
   console.log('  🙂 參考頭像：從 talk-ads.jpg 裁切（未找到 assets/alfred-face.*）');
-  const buf = await sharp(poster).extract({ left: 930, top: 20, width: 300, height: 300 }).jpeg({ quality: 95 }).toBuffer();
+  // 海報 1536×1024，Alfred 的頭部在右上；裁完放大送出，模型比較看得清五官
+  const buf = await sharp(poster)
+    .extract({ left: 945, top: 30, width: 290, height: 300 })
+    .resize(768, 794, { kernel: 'lanczos3' })
+    .jpeg({ quality: 95 })
+    .toBuffer();
   return { data: buf.toString('base64'), mimeType: 'image/jpeg' };
 }
 
