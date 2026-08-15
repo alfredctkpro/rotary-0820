@@ -34,6 +34,9 @@
   .big.xl{font-size:104px;line-height:1.06;}
   .big.sm{font-size:60px;line-height:1.2;}
   .big em{font-style:normal;color:var(--blue);}
+  /* 三層名詞的中文對照（8/15 Alfred：加中文比較親切）——小一號灰字，不搶大字的力道 */
+  .zh{font-size:.42em;font-weight:700;color:var(--muted);letter-spacing:0;
+      margin-left:4px;vertical-align:.16em;white-space:nowrap;}
   .big s{text-decoration:none;position:relative;color:var(--soft);}
   .big s::after{content:"";position:absolute;left:-8px;right:-8px;top:50%;height:9px;
                 background:var(--danger);border-radius:5px;transform:rotate(-4deg);}
@@ -460,10 +463,10 @@
   <section class="slide" data-page="11">
     <div class="body split">
       <div class="tx">
-        <div class="big sm">這個分身叫<br><em>Hermes</em></div>
+        <div class="big sm">後龍蝦時代的新星<br>叫做 <em>Hermes</em></div>
         <div class="sub">會自己學新招、記得住跟它講過的事</div>
         <div class="sub" style="margin-top:16px;font-size:22px">
-          今年初<b>小龍蝦（OpenClaw）</b>爆紅之後出現的新一代開源分身。
+          今年初<b>小龍蝦（OpenClaw）</b>之亂後出現的新一代開源分身。
         </div>
       </div>
       <img src="assets/hermes.png" class="hermes" alt="Hermes" style="flex:none">
@@ -485,11 +488,11 @@
     <div class="body">
       <div class="kicker">心法</div>
       <div class="layers" style="margin-top:34px">
-        <div class="ly step"><span class="yr">2024</span><span class="nm">Prompt</span>
+        <div class="ly step"><span class="yr">2024</span><span class="nm">Prompt<span class="zh">（提示詞）</span></span>
              <span class="ds">學怎麼問問題</span></div>
-        <div class="ly step"><span class="yr">2025</span><span class="nm">Context</span>
+        <div class="ly step"><span class="yr">2025</span><span class="nm">Context<span class="zh">（情境）</span></span>
              <span class="ds">給它來龍去脈</span></div>
-        <div class="ly step"><span class="yr">2026</span><span class="nm">Harness</span>
+        <div class="ly step"><span class="yr">2026</span><span class="nm">Harness<span class="zh">（駕馭）</span></span>
              <span class="ds">給它裝上手腳</span></div>
       </div>
     </div>
@@ -499,7 +502,7 @@
   <section class="slide mid" data-page="14">
     <div class="body">
       <div class="kicker">第一層 · 2024</div>
-      <div class="big" style="margin-top:24px"><em>Prompt</em><br>你怎麼「問」它</div>
+      <div class="big" style="margin-top:24px"><em>Prompt</em><span class="zh">（提示詞）</span><br>你怎麼「問」它</div>
       <div class="sub">生成式 AI 的本質是<b>文字接龍</b>：你起頭，它接下去<br>
         這也是為什麼它有時候數學不太好——它不是在計算，是在接話</div>
     </div>
@@ -540,7 +543,7 @@
   <section class="slide mid" data-page="17">
     <div class="body">
       <div class="kicker">第二層 · 2025</div>
-      <div class="big" style="margin-top:24px"><em>Context</em><br>它對你的事了解多深</div>
+      <div class="big" style="margin-top:24px"><em>Context</em><span class="zh">（情境／來龍去脈）</span><br>它對你的事了解多深</div>
       <div class="sub">同一個問題，了解你的人和不了解你的人，答案天差地遠<br>
         <b>差別不在它多聰明，在它多了解你</b></div>
     </div>
@@ -550,7 +553,7 @@
   <section class="slide" data-page="18">
     <div class="body split">
       <div class="tx">
-        <div class="kicker">Context 的限制</div>
+        <div class="kicker">Context（情境）的限制</div>
         <div class="big sm" style="margin-top:24px">它的桌面<br>是<em>有限</em>的</div>
         <div class="sub">塞太多，舊的會被擠掉、<br>重點會被稀釋</div>
       </div>
@@ -565,7 +568,7 @@
   <section class="slide mid" data-page="19">
     <div class="body">
       <div class="kicker">第三層 · 2026</div>
-      <div class="big" style="margin-top:24px"><em>Harness</em><br>給它裝上手腳</div>
+      <div class="big" style="margin-top:24px"><em>Harness</em><span class="zh">（駕馭）</span><br>給它裝上手腳</div>
       <div class="sub">光會聊天不會做事的，叫聊天機器人<br>
         裝上工具、能真的動手的，才叫<b>分身</b></div>
     </div>
@@ -796,11 +799,11 @@
     <div class="body">
       <div class="kicker">三個宇宙，做的是同一件事</div>
       <div class="layers" style="margin-top:30px">
-        <div class="ly hl step"><span class="yr">2024</span><span class="nm">Prompt</span>
+        <div class="ly hl step"><span class="yr">2024</span><span class="nm">Prompt<span class="zh">（提示詞）</span></span>
              <span class="ds">我怎麼輸入給它？</span></div>
-        <div class="ly hl step"><span class="yr">2025</span><span class="nm">Context</span>
+        <div class="ly hl step"><span class="yr">2025</span><span class="nm">Context<span class="zh">（情境）</span></span>
              <span class="ds">我給它怎樣的來龍去脈？</span></div>
-        <div class="ly hl step"><span class="yr">2026</span><span class="nm">Harness</span>
+        <div class="ly hl step"><span class="yr">2026</span><span class="nm">Harness<span class="zh">（駕馭）</span></span>
              <span class="ds">我給它哪些工具、哪些助手？</span></div>
       </div>
       <div class="sub" style="margin-top:24px">這三個問題不用會寫程式也能想——<b>而且值得每個人為自己的宇宙想一次</b></div>
