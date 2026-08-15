@@ -508,39 +508,8 @@
     </div>
   </section>
 
-  <!-- P15 安全故事一：它把信箱清空了 -->
+  <!-- P15 Context（2025） -->
   <section class="slide mid" data-page="15">
-    <div class="body">
-      <div class="kicker">安全故事 ①</div>
-      <div class="say" style="margin-top:30px">「幫我整理 email」</div>
-      <div class="fall">↓</div>
-      <div class="boom step">收件匣：0 封</div>
-      <div class="sub">今年初爆紅的小龍蝦（OpenClaw）——紅到聽說 Mac mini 都缺貨的那個。<br>
-        它很認真地理解了「整理」這兩個字。</div>
-    </div>
-  </section>
-
-  <!-- P16 安全故事二：它做到了——用你不敢用的方法 -->
-  <section class="slide mid" data-page="16">
-    <div class="body">
-      <div class="kicker">安全故事 ②</div>
-      <div class="big sm" style="margin-top:20px">排第四的預約<br>變成了<em>第一</em></div>
-      <div class="queue" style="margin-top:30px">
-        <div class="q">1</div><div class="q">2</div><div class="q">3</div>
-        <div class="q me">我</div>
-      </div>
-      <div class="fall step">↓</div>
-      <div class="queue step">
-        <div class="q me">我</div>
-        <div class="q gone">1</div><div class="q gone">2</div><div class="q gone">3</div>
-      </div>
-      <div class="sub">它找到系統的 API 漏洞，把排在前面的人全部移掉了。<br>
-        注意：<b>它完成了任務</b>，prompt 一個字都沒下錯。</div>
-    </div>
-  </section>
-
-  <!-- P17 Context（2025） -->
-  <section class="slide mid" data-page="17">
     <div class="body">
       <div class="kicker">第二層 · 2025</div>
       <div class="big" style="margin-top:24px"><em>Context</em><span class="zh">（情境／來龍去脈）</span><br>它對你的事了解多深</div>
@@ -549,8 +518,8 @@
     </div>
   </section>
 
-  <!-- P18 Context 的限制：桌面有限 -->
-  <section class="slide" data-page="18">
+  <!-- P16 Context 的限制：桌面有限 -->
+  <section class="slide" data-page="16">
     <div class="body split">
       <div class="tx">
         <div class="kicker">Context（情境）的限制</div>
@@ -564,8 +533,8 @@
     </div>
   </section>
 
-  <!-- P19 Harness（2026） -->
-  <section class="slide mid" data-page="19">
+  <!-- P17 Harness（2026） -->
+  <section class="slide mid" data-page="17">
     <div class="body">
       <div class="kicker">第三層 · 2026</div>
       <div class="big" style="margin-top:24px"><em>Harness</em><span class="zh">（駕馭）</span><br>給它裝上手腳</div>
@@ -574,8 +543,8 @@
     </div>
   </section>
 
-  <!-- P20 先塑造「人」：Agent ＋ Skill ⭐ -->
-  <section class="slide mid" data-page="20">
+  <!-- P18 先塑造「人」：Agent ＋ Skill ⭐ -->
+  <section class="slide mid" data-page="18">
     <div class="body">
       <div class="big sm">有手有腳<br>還不是<em>一個人</em></div>
       <div class="duo" style="margin-top:34px">
@@ -593,8 +562,8 @@
     </div>
   </section>
 
-  <!-- P21 再發「工具」⭐ -->
-  <section class="slide mid" data-page="21">
+  <!-- P19 再發「工具」⭐（門禁卡＝下兩頁災難的鋪墊，別在這頁爆雷） -->
+  <section class="slide mid" data-page="19">
     <div class="body">
       <div class="big sm">人對了<br>再<em>發傢伙</em></div>
       <div class="tools" style="margin-top:30px">
@@ -607,6 +576,41 @@
         <div class="t step"><span class="n">Workflow</span>
           <span class="d">標準流程<span>事情怎麼串、做到哪算完</span></span></div>
       </div>
+    </div>
+  </section>
+
+  <!-- ── 8/15 改序：兩個安全故事從 Prompt 之後（原 P15／P16）移到三層講完之後。
+       理由＝這兩個 agent 三層都有，是「沒用好／發過頭」的案例，不是「Prompt 沒下好」。
+       信箱＝第二層沒給夠；插隊＝第三層發過頭（門禁卡），一頁扛一層。 ── -->
+
+  <!-- P20 安全故事一：它把信箱清空了（＝Context 沒給夠） -->
+  <section class="slide mid" data-page="20">
+    <div class="body">
+      <div class="kicker">安全故事 ①</div>
+      <div class="say" style="margin-top:30px">「幫我整理 email」</div>
+      <div class="fall">↓</div>
+      <div class="boom step">收件匣：0 封</div>
+      <div class="sub">它很認真地理解了「整理」這兩個字。<br>
+        <b>沒有人告訴過它，哪幾封信是你的命根子。</b></div>
+    </div>
+  </section>
+
+  <!-- P21 安全故事二：它做到了——用你剛發出去的那張門禁卡（＝Harness 發過頭） -->
+  <section class="slide mid" data-page="21">
+    <div class="body">
+      <div class="kicker">安全故事 ②</div>
+      <div class="big sm" style="margin-top:20px">排第四的預約<br>變成了<em>第一</em></div>
+      <div class="queue" style="margin-top:30px">
+        <div class="q">1</div><div class="q">2</div><div class="q">3</div>
+        <div class="q me">我</div>
+      </div>
+      <div class="fall step">↓</div>
+      <div class="queue step">
+        <div class="q me">我</div>
+        <div class="q gone">1</div><div class="q gone">2</div><div class="q gone">3</div>
+      </div>
+      <div class="sub">它找到系統的 API 漏洞，把排在前面的人全部移掉了。<br>
+        <b>它完成了任務</b>——用你剛剛發給它的那張<b>門禁卡</b>。</div>
     </div>
   </section>
 
